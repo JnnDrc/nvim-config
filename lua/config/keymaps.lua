@@ -24,26 +24,38 @@ if true then
   map_key('',"<right>","<nop>")
 end
 
--- Windows
+-- Window split
 map_key('n',"<leader>wH","<CMD>new<CR>","create a new window in horizontal")
 map_key('n',"<leader>wh","<CMD>split<CR>","split the current window in horizontal")
 map_key('n',"<leader>wV","<CMD>vnew<CR>","create a new window in vertical")
 map_key('n',"<leader>wv","<CMD>vsplit<CR>","split the current window in vertical")
 map_key('n',"<leader>wc","<CMD>close<CR>","close the current window")
 
+-- Window save/quiting
 map_key('n',"<leader>www","<CMD>wall<CR>","write all files with changes")
 map_key('n',"<leader>wqq","<CMD>qall<CR>","close all windows and quit nvim")
 map_key('n',"<leader>wwq","<CMD>wqall<CR>","write all files and quit nvim")
 map_key('n',"<leader>wq!","<CMD>qall!<CR>","throw all changes and quit nvim")
 
+-- Window movement
 map_key('n',"<C-H>","<C-W>h")
 map_key('n',"<C-L>","<C-W>l")
 map_key('n',"<C-J>","<C-W>j")
 map_key('n',"<C-K>","<C-W>k")
 
+-- Window resize
+map_key('n',"<C-up>","<CMD>resize +1<CR>")
+map_key('n',"<C-down>","<CMD>resize -1<CR>")
+map_key('n',"<C-right>","<CMD>vertical resize +1<CR>")
+map_key('n',"<C-left>","<CMD>vertical resize -1<CR>")
+
 -- config reload
 map_key('n',"<leader>r","<CMD>so %<CR>","reload neovim")
 
+-- buffer keymaps
+map_key('n',"<leader>c","<CMD>bd<CR>","close current buffer")
+map_key('n',"<leader>>","<CMD>bnext<CR>","go to the next buffer")
+map_key('n',"<leader><","<CMD>bprevious<CR>","go to the previousbuffer")
 -------------------------------------------------
 -- Plugins keymaps
 -------------------------------------------------

@@ -1,4 +1,6 @@
 return {
+  -- set the colorscheme in init.lua
+  {
     "catppuccin/nvim",
     lazy = false,
     name = "catppuccin",
@@ -6,4 +8,5 @@ return {
     config = function()
         vim.cmd.colorscheme "catppuccin"
     end
+  },
 }
