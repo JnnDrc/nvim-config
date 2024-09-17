@@ -16,9 +16,12 @@ return {
     {
         "neovim/nvim-lspconfig",
         config = function()
-            local lspconfig = require("lspconfig")
-            lspconfig.lua_ls.setup({})
+            local cmp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+            local lspconfig = require("lspconfig")
+            lspconfig.lua_ls.setup({
+              capabilities = cmp_capabilities
+            })
             vim.keymap.set('n',"<leader>ld",vim.lsp.buf.hover,{desc = "documentation"})
             vim.keymap.set('n',"<leader>lD",vim.lsp.buf.definition,{desc = "go to definition"})
             vim.keymap.set('n',"<leader>lr",vim.lsp.buf.rename,{ desc = "rename symbol"})

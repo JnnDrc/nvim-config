@@ -54,14 +54,20 @@ map_key('n',"<leader>r","<CMD>so %<CR>","reload neovim")
 
 -- buffer keymaps
 map_key('n',"<leader>c","<CMD>bd<CR>","close current buffer")
+map_key('n',"<leader>C","<CMD>bd!<CR>","throw out current buffer")
 map_key('n',"<leader>>","<CMD>bnext<CR>","go to the next buffer")
 map_key('n',"<leader><","<CMD>bprevious<CR>","go to the previousbuffer")
 -------------------------------------------------
 -- Plugins keymaps
 -------------------------------------------------
-
+-- Alpha
+map_key('n',"<leader>a","<CMD>Alpha<CR>","Dashboard/Alpha")
 -- Lazy & Mason
 map_key('n',"<leader>pl","<CMD>Lazy<CR>","open Lazy dashboard")
 map_key('n',"<leader>pm","<CMD>Mason<CR>","open Mason dashboard")
 -- Neotree
 map_key('n',"<leader>e","<CMD>Neotree toggle<CR>","toggle Neotree")
+-- Telescope
+map_key('n',"<leader>gc","<CMD>Telescope git_commits<CR>","show git commits")
+map_key('n',"<leader>gb","<CMD>Telescope git_branches<CR>","show git branches")
+map_key('n',"<leader>gs","<CMD>Telescope git_status<CR>","show git status")
