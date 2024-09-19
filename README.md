@@ -1,4 +1,4 @@
-# JAYVIM
+# JayNVim
 
 it's just my nvim configuration
 

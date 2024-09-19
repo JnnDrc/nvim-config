@@ -1,3 +1,7 @@
+-------------------------------------------------
+-- JayNvim options configuration!
+-------------------------------------------------
+
 local opt = vim.opt
 
 -------------------------------------------------
@@ -22,3 +26,4 @@ opt.relativenumber = true
 opt.cursorline = true
 opt.showmatch = true
 opt.termguicolors = true
+opt.wrap = false

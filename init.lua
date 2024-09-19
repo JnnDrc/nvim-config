@@ -1,16 +1,20 @@
 -------------------------------------------------
+-- JayNvim init file
+-------------------------------------------------
+-------------------------------------------------
 -- Init core
 -------------------------------------------------
-require("config.lazy")
-require("config.options")
-require("config.keymaps")
---Colorscheme------------------------------------
-vim.cmd.colorscheme "catppuccin"
--------------------------------------------------
+require("config.lazy")         -- Lazy.nvim set-up
+require("config.options")      -- vim options
+require("config.colorscheme")  -- colorscheme config
+require("config.keymaps")      -- re-mapings
+require("config.usercommands") -- user defined commands
 -------------------------------------------------
 -- Init plugins
 -------------------------------------------------
-require("bufferline").setup()
-require("neo-tree").setup()
-require("neodev").setup()
-
+vim.notify = require("notify") -- set notifification system to notify.nvim
+-------------------------------------------------
+-- Other options
+-------------------------------------------------
+--Colorscheme------------------------------------
+  ChangeColorScheme() -- no args: default, see config.colorscheme
