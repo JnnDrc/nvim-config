@@ -4,7 +4,7 @@ return {
     config = function()
         local tsconfig = require("nvim-treesitter.configs")
         tsconfig.setup({
-        ensure_installed = {"lua","c"},
+        ensure_installed = {"lua","c","toml"},
         highlight = { eneable = true},
         indent = { eneable = true},
     })
