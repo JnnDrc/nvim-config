@@ -20,8 +20,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 --Defines-leader-keys----------------------------
-require("config.leader")
-
+--require("config.leader")
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 --Setup-lazy.nvim--------------------------------
 require("lazy").setup({
   spec = {

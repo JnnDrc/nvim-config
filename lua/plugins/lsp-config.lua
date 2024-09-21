@@ -31,11 +31,13 @@ return {
             end
 
             lspconfig.lua_ls.setup({
+              cmd = {vim.fn.exepath("lua-language-server")},
               capabilities = cmp_capabilities,
               on_attach =  default_on_attach,
             })
 
             lspconfig.clangd.setup({
+              cmd = {vim.fn.exepath("clangd")},
               capabilities = cmp_capabilities,
               on_attach = default_on_attach,
             })

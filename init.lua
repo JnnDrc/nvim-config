@@ -18,6 +18,6 @@ vim.notify = require("notify") -- set notifification system to notify.nvim
 -- Other options
 -------------------------------------------------
 --Colorscheme------------------------------------
-ChangeColorScheme() -- no args: default, see config.colorscheme
+SetColorScheme(require("config.current-theme")) -- no args: default, see config.colorscheme
 --Print-startup-time-----------------------------
 vim.notify(string.format("Neovim loaded in %.4fms",((vim.loop.hrtime() - start_time)/1e6)),"info",{title = "Welcome again!"})
