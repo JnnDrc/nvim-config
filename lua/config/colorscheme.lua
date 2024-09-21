@@ -20,7 +20,7 @@ local installed_themes = {
 } -- THIS IS MANUAL
 
 
-local function choose_theme()
+local function SelectColorScheme()
   vim.ui.select(installed_themes,{
     prompt = "Choose theme:",
     format_item = function (theme)
@@ -56,5 +56,5 @@ vim.api.nvim_create_user_command("ChangeColors",function(opts)
   ChangeColorScheme(opts.args:match("([^ ]+)[ ]*(.*)"))
 end,{nargs = '?'}) -- nvim command
 
-vim.api.nvim_create_user_command("SelectColors",choose_theme,{nargs = '?'})
+vim.api.nvim_create_user_command("SelectColors",SelectColorScheme,{nargs = '?'})
 -------------------------------------------------

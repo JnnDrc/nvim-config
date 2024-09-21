@@ -75,9 +75,14 @@ map_key('n',"<leader>e","<CMD>Neotree toggle<CR>","Toggle Neotree")
 map_key('n',"<leader>gc","<CMD>Telescope git_commits<CR>","Show git commits")
 map_key('n',"<leader>gb","<CMD>Telescope git_branches<CR>","Show git branches")
 map_key('n',"<leader>gs","<CMD>Telescope git_status<CR>","Show git status")
-
+-- ToggleTerm
+map_key('n',"<leader>th","<CMD>ToggleTerm direction=horizontal<CR>","Toggle horizontal terminal")
+map_key('n',"<leader>tv","<CMD>ToggleTerm direction=vertical<CR>","Toggle horizontal terminal")
+map_key('n',"<leader>tf","<CMD>ToggleTerm direction=float<CR>","Toggle horizontal terminal")
+map_key('',"<F7>","<CMD>ToggleTerm<CR>","Toggle last terminal section")
+map_key('t',"<ESC>","<CMD>ToggleTerm<CR>","Exits terminal")
 -------------------------------------------------
 -- Config/User keymaps
 -------------------------------------------------
 -- Themes
-map_key('n',"<leader>t","<CMD>SelectColors<CR>","Change Colorscheme(UI)")
+map_key('n',"<leader>C","<CMD>SelectColors<CR>","Change Colorscheme(UI)")
