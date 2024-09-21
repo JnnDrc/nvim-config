@@ -77,10 +77,15 @@ map_key('n',"<leader>gb","<CMD>Telescope git_branches<CR>","Show git branches")
 map_key('n',"<leader>gs","<CMD>Telescope git_status<CR>","Show git status")
 -- ToggleTerm
 map_key('n',"<leader>th","<CMD>ToggleTerm direction=horizontal<CR>","Toggle horizontal terminal")
-map_key('n',"<leader>tv","<CMD>ToggleTerm direction=vertical<CR>","Toggle horizontal terminal")
+map_key('n',"<leader>tv","<CMD>ToggleTerm direction=vertical size=60<CR>","Toggle horizontal terminal")
 map_key('n',"<leader>tf","<CMD>ToggleTerm direction=float<CR>","Toggle horizontal terminal")
+
 map_key('',"<F7>","<CMD>ToggleTerm<CR>","Toggle last terminal section")
-map_key('t',"<ESC>","<CMD>ToggleTerm<CR>","Exits terminal")
+map_key('t',"<ESC>","<CMD>ToggleTerm<CR>","Close terminal")
+
+map_key('n',"<leader>tn","<CMD>TermExec cmd=\"node\"<CR>","Toggle NodeJS")
+map_key('n',"<leader>tp","<CMD>TermExec cmd=\"python\"<CR>","Toggle Python")
+map_key('n',"<leader>tl","<CMD>TermExec cmd=\"lua\"<CR>","Toggle Lua")
 -------------------------------------------------
 -- Config/User keymaps
 -------------------------------------------------

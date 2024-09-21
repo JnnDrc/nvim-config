@@ -10,6 +10,8 @@ require("config.options")      -- vim options
 require("config.colorscheme")  -- colorscheme config
 require("config.keymaps")      -- re-mapings
 require("config.usercommands") -- user defined commands
+
+require("config.toggleterm")   -- toggleterm special terminals
 -------------------------------------------------
 -- Init plugins
 -------------------------------------------------
