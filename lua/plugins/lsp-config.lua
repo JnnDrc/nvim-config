@@ -30,12 +30,20 @@ return {
               vim.keymap.set('n',"<leader>li","<CMD>LspInfo<CR>",{desc = "shows lsp info"})
             end
 
+            local lua_ls_path = vim.fn.exepath("lua-language-server")
+            if lua_ls_path == "" then
+              vim.notify("Can't find lua-language-server in $PATH")
+            end
             lspconfig.lua_ls.setup({
-              cmd = {vim.fn.exepath("lua-language-server")},
+              cmd = {lua_ls_path},
               capabilities = cmp_capabilities,
               on_attach =  default_on_attach,
             })
 
+            local clangd_path = vim.fn.exepath("clangd")
+            if clangd_path == "" then
+              vim.notify("Can't find clangd in $PATH")
+            end
             lspconfig.clangd.setup({
               cmd = {vim.fn.exepath("clangd")},
               capabilities = cmp_capabilities,
