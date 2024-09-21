@@ -73,7 +73,7 @@ map_key('n',"<leader>pm","<CMD>Mason<CR>","Open Mason dashboard")
 map_key('n',"<leader>e","<CMD>Neotree toggle<CR>","Toggle Neotree")
 -- Telescope
 map_key('n',"<leader>gc","<CMD>Telescope git_commits<CR>","Show git commits")
-map_key('n',"<leader>gb","<CMD>Telescope git_branches<CR>","Show git branches")
+map_key('n',"<leader>gr","<CMD>Telescope git_branches<CR>","Show git branches")
 map_key('n',"<leader>gs","<CMD>Telescope git_status<CR>","Show git status")
 -- ToggleTerm
 map_key('n',"<leader>th","<CMD>ToggleTerm direction=horizontal<CR>","Toggle horizontal terminal")
@@ -86,6 +86,11 @@ map_key('t',"<ESC>","<CMD>ToggleTerm<CR>","Close terminal")
 map_key('n',"<leader>tn","<CMD>TermExec cmd=\"node\"<CR>","Toggle NodeJS")
 map_key('n',"<leader>tp","<CMD>TermExec cmd=\"python\"<CR>","Toggle Python")
 map_key('n',"<leader>tl","<CMD>TermExec cmd=\"lua\"<CR>","Toggle Lua")
+-- Gitsigns
+map_key('n',"<leader>gp","<CMD>Gitsigns preview_hunk<CR>","Preview hunk")
+map_key('n',"<leader>gb","<CMD>Gitsigns toggle_current_line_blame<CR>","Toggle line blame")
+map_key('n',"<leader>gl","<CMD>Gitsigns blame_line<CR>","Blame the current line")
+
 -------------------------------------------------
 -- Config/User keymaps
 -------------------------------------------------

@@ -1,1 +1,1 @@
-return "monokai-pro-octagon"
+return "monokai-pro-default"
