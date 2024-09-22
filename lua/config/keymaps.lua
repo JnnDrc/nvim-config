@@ -80,7 +80,7 @@ map_key('n',"<leader>th","<CMD>ToggleTerm direction=horizontal<CR>","Toggle hori
 map_key('n',"<leader>tv","<CMD>ToggleTerm direction=vertical size=60<CR>","Toggle horizontal terminal")
 map_key('n',"<leader>tf","<CMD>ToggleTerm direction=float<CR>","Toggle horizontal terminal")
 
-map_key('',"<F7>","<CMD>ToggleTerm<CR>","Toggle last terminal section")
+map_key('n',"<F7>","<CMD>ToggleTerm<CR>","Toggle last terminal section")
 map_key('t',"<ESC>","<CMD>ToggleTerm<CR>","Close terminal")
 
 map_key('n',"<leader>tn","<CMD>TermExec cmd=\"node\"<CR>","Toggle NodeJS")

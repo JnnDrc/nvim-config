@@ -1,1 +1,1 @@
-return "monokai-pro-default"
+return "gruvbox"

@@ -1,4 +1,4 @@
--------------------------------------------------
+------------------------------------------------
 -- JayNvim colorscheme configuration!
 -------------------------------------------------
 
@@ -36,8 +36,9 @@ end
 --Change-colorscheme-helpers---------------------
 function ChangeColorScheme(cs)
   cs = cs or default
-  local f = io.open("lua/config/current-theme.lua","w")
+  local f = io.open(vim.fn.stdpath("config") .. "/lua/config/current-theme.lua","w")
   if(f == nil) then
+    print("Cant find themes folder")
     return
   end
   f:write(string.format("return \"%s\"",cs))
