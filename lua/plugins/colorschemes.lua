@@ -15,5 +15,10 @@ return {
     "loctvl842/monokai-pro.nvim",
     lazy = false,
     name = "monokai-pro"
+  },
+  {
+    "shaunsingh/nord.nvim",
+    lazy = false,
+    name = "nord"
   }
 }

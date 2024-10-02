@@ -20,43 +20,37 @@ end
 -- Neovim keympas
 -------------------------------------------------
 
--- Block arrow keys
+-- Disable arrow keys
 if true then
   map_key('',"<up>","<nop>")
   map_key('',"<down>","<nop>")
   map_key('',"<left>","<nop>")
   map_key('',"<right>","<nop>")
 end
-
 -- Window split
 map_key('n',"<leader>wH","<CMD>new<CR>","Create a new window in horizontal")
 map_key('n',"<leader>wh","<CMD>split<CR>","Split the current window in horizontal")
 map_key('n',"<leader>wV","<CMD>vnew<CR>","Create a new window in vertical")
 map_key('n',"<leader>wv","<CMD>vsplit<CR>","Split the current window in vertical")
 map_key('n',"<leader>wc","<CMD>close<CR>","Close the current window")
-
 -- Window save/quiting
 map_key('n',"<leader>www","<CMD>wall<CR>","Write all files with changes")
 map_key('n',"<leader>wqq","<CMD>qall<CR>","Close all windows and quit nvim")
 map_key('n',"<leader>wwq","<CMD>wqall<CR>","Write all files and quit nvim")
 map_key('n',"<leader>wq!","<CMD>qall!<CR>","Throw all changes and quit nvim")
-
 -- Window movement
 map_key('n',"<C-H>","<C-W>h")
 map_key('n',"<C-L>","<C-W>l")
 map_key('n',"<C-J>","<C-W>j")
 map_key('n',"<C-K>","<C-W>k")
-
 -- Window resize
 map_key('n',"<C-up>","<CMD>resize +1<CR>")
 map_key('n',"<C-down>","<CMD>resize -1<CR>")
 map_key('n',"<C-right>","<CMD>vertical resize +1<CR>")
 map_key('n',"<C-left>","<CMD>vertical resize -1<CR>")
-
--- config reload
+-- Config reload
 map_key('n',"<leader>r","<CMD>so %<CR>","Reload neovim config")
-
--- buffer keymaps
+-- Buffer keymaps
 map_key('n',"<leader>c","<CMD>bd<CR>","Close current buffer")
 map_key('n',"<leader>x","<CMD>bd!<CR>","Throw out current buffer")
 map_key('n',"<TAB>","<CMD>bnext<CR>","Go to the next buffer")
@@ -76,21 +70,24 @@ map_key('n',"<leader>gc","<CMD>Telescope git_commits<CR>","Show git commits")
 map_key('n',"<leader>gr","<CMD>Telescope git_branches<CR>","Show git branches")
 map_key('n',"<leader>gs","<CMD>Telescope git_status<CR>","Show git status")
 -- ToggleTerm
+--/-- open default terminals
 map_key('n',"<leader>th","<CMD>ToggleTerm direction=horizontal<CR>","Toggle horizontal terminal")
-map_key('n',"<leader>tv","<CMD>ToggleTerm direction=vertical size=60<CR>","Toggle horizontal terminal")
-map_key('n',"<leader>tf","<CMD>ToggleTerm direction=float<CR>","Toggle horizontal terminal")
-
-map_key('n',"<F7>","<CMD>ToggleTerm<CR>","Toggle last terminal section")
-map_key('t',"<ESC>","<CMD>ToggleTerm<CR>","Close terminal")
-
+map_key('n',"<leader>tv","<CMD>ToggleTerm direction=vertical size=60<CR>","Toggle vertical terminal")
+map_key('n',"<leader>tf","<CMD>ToggleTerm direction=float<CR>","Toggle floating terminal")
+--/-- open interpreter terminal
 map_key('n',"<leader>tn","<CMD>TermExec cmd=\"node\"<CR>","Toggle NodeJS")
 map_key('n',"<leader>tp","<CMD>TermExec cmd=\"python\"<CR>","Toggle Python")
 map_key('n',"<leader>tl","<CMD>TermExec cmd=\"lua\"<CR>","Toggle Lua")
+map_key('n',"<leader>tsn","<CMD>TermExec cmd=\"nu\"<CR>","Toggle nushell")
+--/-- termianl section
+map_key('n',"<F7>","<CMD>ToggleTerm<CR>","Toggle last terminal section")
+map_key('t',"<ESC>","<CMD>ToggleTerm<CR>","Close terminal")
 -- Gitsigns
 map_key('n',"<leader>gp","<CMD>Gitsigns preview_hunk<CR>","Preview hunk")
 map_key('n',"<leader>gb","<CMD>Gitsigns toggle_current_line_blame<CR>","Toggle line blame")
 map_key('n',"<leader>gl","<CMD>Gitsigns blame_line<CR>","Blame the current line")
-
+-- Markview
+map_key('n',"<leader>mt","<CMD>Markview toggle<CR>","Toggle the preview mode");
 -------------------------------------------------
 -- Config/User keymaps
 -------------------------------------------------

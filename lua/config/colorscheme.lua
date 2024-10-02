@@ -17,9 +17,11 @@ local installed_themes = {
   "monokai-pro-machine",
   "monokai-pro-ristretto",
   "monokai-pro-spectrum",
+  "nord",
 } -- THIS IS MANUAL
 
 
+--Change-colorscheme-helpers---------------------
 local function SelectColorScheme()
   vim.ui.select(installed_themes,{
     prompt = "Choose theme:",
@@ -33,7 +35,6 @@ local function SelectColorScheme()
   end)
 end
 
---Change-colorscheme-helpers---------------------
 function ChangeColorScheme(cs)
   cs = cs or default
   local f = io.open(vim.fn.stdpath("config") .. "/lua/config/current-theme.lua","w")
@@ -45,6 +46,7 @@ function ChangeColorScheme(cs)
   f:close()
   vim.cmd.colorscheme(cs)
 end
+
 function SetColorScheme(cs)
   cs = cs or default
   vim.cmd.colorscheme(cs)

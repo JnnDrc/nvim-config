@@ -2,7 +2,7 @@
 -- JayNvim usercommands configuration!
 -------------------------------------------------
 
-function create_command(name,func,opts)
+local function create_command(name,func,opts)
   vim.api.nvim_create_user_command(name,
       function(opts)
         func(opts.args:match("([^ ]+)[ ]*(.*)"))

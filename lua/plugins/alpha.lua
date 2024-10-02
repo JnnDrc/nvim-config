@@ -18,8 +18,8 @@ return {
         dashboard.section.buttons.val = {
           dashboard.button("e","\u{F0214} :\t New file","<CMD>ene <BAR> startinsert <CR>"),
           dashboard.button("f","󰈞 :\t Find file","<CMD>Telescope find_files <CR>"),
-          dashboard.button("r"," :\t Recent files", ":Telescope oldfiles <CR>"),
           dashboard.button("g","\u{F1C2} :\t Find word","<CMD>Telescope live_grep<CR>"),
+          dashboard.button("r"," :\t Recent files", ":Telescope oldfiles <CR>"),
           dashboard.button("c","\u{EB51} :\t Configurations","<CMD>cd $NVIM_CONFIG <CR>|<CMD>e init.lua <CR> "),
           dashboard.button("q", "\u{F0206} :\t Quit Neovim", ":qa<CR>"),
         }

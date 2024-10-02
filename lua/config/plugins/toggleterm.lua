@@ -1,3 +1,6 @@
+-------------------------------------------------
+-- Toggleterm configuration!
+-------------------------------------------------
 local Terminal = require("toggleterm.terminal").Terminal
 
 local lazygit = Terminal:new({

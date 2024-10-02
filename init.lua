@@ -10,12 +10,11 @@ require("config.options")      -- vim options
 require("config.colorscheme")  -- colorscheme config
 require("config.keymaps")      -- re-mapings
 require("config.usercommands") -- user defined commands
-
-require("config.toggleterm")   -- toggleterm special terminals
 -------------------------------------------------
 -- Init plugins
 -------------------------------------------------
-vim.notify = require("notify") -- set notifification system to notify.nvim
+require("config.plugins.toggleterm")    -- toggleterm special terminals
+vim.notify = require("notify")          -- set notifification system to notify.nvim
 -------------------------------------------------
 -- Other options
 -------------------------------------------------
