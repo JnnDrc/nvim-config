@@ -14,11 +14,13 @@ end
 -------------------------------------------------
 -- Indentation
 -------------------------------------------------
-opt.tabstop = 2
-opt.softtabstop = 2
-opt.shiftwidth = 2
+local tab_size = 4
+opt.tabstop = tab_size
+opt.softtabstop = tab_size
+opt.shiftwidth = tab_size
 opt.expandtab = true
 opt.smartindent = true
+
 
 -------------------------------------------------
 -- UI
