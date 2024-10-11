@@ -10,3 +10,12 @@ local function create_command(name,func,opts)
       opts or {})
 end
 
+-------------------------------------------------
+-- Functions
+-------------------------------------------------
+
+local function _rshl()
+  vim.cmd("let @/ = \"\"")
+end
+
+create_command("Rshl",_rshl)

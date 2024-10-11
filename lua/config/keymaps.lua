@@ -78,7 +78,8 @@ map_key('n',"<leader>tf","<CMD>ToggleTerm direction=float<CR>","Toggle floating 
 map_key('n',"<leader>tn","<CMD>TermExec cmd=\"node\"<CR>","Toggle NodeJS")
 map_key('n',"<leader>tp","<CMD>TermExec cmd=\"python\"<CR>","Toggle Python")
 map_key('n',"<leader>tl","<CMD>TermExec cmd=\"lua\"<CR>","Toggle Lua")
-map_key('n',"<leader>tsn","<CMD>TermExec cmd=\"nu\"<CR>","Toggle nushell")
+map_key('n',"<leader>tu","<CMD>TermExec cmd=\"nu\"<CR>","Toggle Nushell")
+map_key("n","<leader>tz","<CMD>TermExec cmd=\"zsh\"<CR>","Toggle Zsh")
 --/-- termianl section
 map_key('n',"<F7>","<CMD>ToggleTerm<CR>","Toggle last terminal section")
 map_key('t',"<ESC>","<CMD>ToggleTerm<CR>","Close terminal")
