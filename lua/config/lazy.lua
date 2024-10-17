@@ -2,6 +2,8 @@
 --  lazy boot
 -------------------------------------------------
 
+require("leader-key")-- for correctly set-up all plugins
+
 --Bootstrap-lazy.nvim----------------------------
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -19,10 +21,8 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
---Defines-leader-keys----------------------------
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
 --Setup-lazy.nvim--------------------------------
+
 require("lazy").setup({
   spec = {
     -- import your plugins

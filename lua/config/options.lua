@@ -1,5 +1,5 @@
 -------------------------------------------------
--- JayNvim options configuration!
+-- Options configuration!
 -------------------------------------------------
 
 local opt = vim.opt
@@ -8,7 +8,7 @@ local opt = vim.opt
 -- General
 -------------------------------------------------
 opt.clipboard = "unnamedplus"
-if true then
+if false then
 opt.mouse = ""
 end
 -------------------------------------------------

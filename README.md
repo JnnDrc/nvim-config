@@ -1,7 +1,16 @@
 # JayNVim
 
-it's just my nvim configuration
+It's just my nvim configuration
+
+## Structure
+
+lua         lua filesdirectory
+|
+|-config        nvim configuration
+| |-plugins         plugins configuration
+|-plugins       plugins downloads and startup settings
+init.lua    init.lua
 
 ## OBS
-- needs to set envirioment variable NVIM\_CONFIG to use config button of dashboard
-- remember to add nvim-data\mason\bin in your $PATH
+- Needs to set envirioment variable NVIM\_CONFIG to use config button of dashboard
+- Remember to add nvim-data\mason\bin to $PATH

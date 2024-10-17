@@ -1,5 +1,5 @@
 ------------------------------------------------
--- JayNvim colorscheme configuration!
+-- Colorscheme configuration!
 -------------------------------------------------
 
 --Default-colorscheme----------------------------

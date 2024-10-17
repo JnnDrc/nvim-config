@@ -23,6 +23,7 @@ return {
 
             local function default_on_attach()
               vim.keymap.set('n',"<leader>A",vim.lsp.buf.code_action,{desc = "code action"})
+              vim.keymap.set('n',"<leader>d",vim.diagnostic.open_float,{desc = "see diagnostics"})
               vim.keymap.set('n',"<leader>ld",vim.lsp.buf.hover,{desc = "documentation"})
               vim.keymap.set('n',"<leader>lD",vim.lsp.buf.definition,{desc = "go to definition"})
               vim.keymap.set('n',"<leader>lr",vim.lsp.buf.rename,{ desc = "rename symbol"})
