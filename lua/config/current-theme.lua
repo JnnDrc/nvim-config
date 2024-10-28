@@ -1,1 +1,1 @@
-return "darcula"
+return "monokai-pro-octagon"

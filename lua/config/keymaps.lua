@@ -69,6 +69,7 @@ map_key('n',"<leader>e","<CMD>Neotree toggle<CR>","Toggle Neotree")
 map_key('n',"<leader>gc","<CMD>Telescope git_commits<CR>","Show git commits")
 map_key('n',"<leader>gr","<CMD>Telescope git_branches<CR>","Show git branches")
 map_key('n',"<leader>gs","<CMD>Telescope git_status<CR>","Show git status")
+map_key('n',"<leader>n","<CMD>Telescope notify<CR>","See notify history")
 -- ToggleTerm
 --/-- open default terminals
 map_key('n',"<leader>th","<CMD>ToggleTerm direction=horizontal<CR>","Toggle horizontal terminal")

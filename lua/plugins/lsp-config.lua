@@ -3,7 +3,6 @@ return {
         "williamboman/mason.nvim",
         config = function()
             require("mason").setup({
- --             PATH = "append",
             })
         end
     },
@@ -11,7 +10,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = {"lua_ls","clangd","taplo"}
+                    ensure_installed = {"lua_ls","clangd","taplo","asm_lsp"}
             })
         end
     },
@@ -30,24 +29,31 @@ return {
               vim.keymap.set('n',"<leader>ls",vim.lsp.buf.document_symbol,{desc = "document symbols"})
               vim.keymap.set('n',"<leader>li","<CMD>LspInfo<CR>",{desc = "shows lsp info"})
             end
-            local lua_ls_path = vim.fn.exepath("lua-language-server")
-            if lua_ls_path == "" then
-              vim.notify("Can't find lua-language-server in $PATH")
+            local function exe_path(lsp)
+                local path = vim.fn.exepath(lsp)
+                if path == "" then
+                    vim.notify("Can't find " .. lsp .. "executable")
+                end
+                return path
             end
+            local lua_ls_path = exe_path("lua-language-server")
+            local clangd_path = exe_path("clangd")
+            local asm_lsp_path = exe_path("asm-lsp")
+
             lspconfig.lua_ls.setup({
               cmd = {lua_ls_path},
               capabilities = cmp_capabilities,
               on_attach =  default_on_attach,
             })
-
-            local clangd_path = vim.fn.exepath("clangd")
-            if clangd_path == "" then
-              vim.notify("Can't find clangd in $PATH")
-            end
             lspconfig.clangd.setup({
               cmd = {clangd_path},
               capabilities = cmp_capabilities,
               on_attach = default_on_attach,
+            })
+            lspconfig.asm_lsp.setup({
+                cmd = {asm_lsp_path},
+                capabilities = cmp_capabilities,
+                on_attach = default_on_attach,
             })
 
 
