@@ -73,6 +73,8 @@ map_key('n',"<leader>pl","<CMD>Lazy<CR>","Open Lazy dashboard")
 map_key('n',"<leader>pm","<CMD>Mason<CR>","Open Mason dashboard")
 -- Neotree
 map_key('n',"<leader>e","<CMD>Neotree toggle<CR>","Toggle Neotree")
+-- Oil
+map_key('n','<leader>o',"<CMD>Oil<CR>","Toggle oil")
 -- Telescope
 map_key('n',"<leader>gc","<CMD>Telescope git_commits<CR>","Show git commits")
 map_key('n',"<leader>gr","<CMD>Telescope git_branches<CR>","Show git branches")

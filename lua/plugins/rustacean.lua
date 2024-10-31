@@ -15,6 +15,7 @@ return {
               vim.keymap.set('n',"<leader>lD",vim.lsp.buf.definition,{desc = "go to definition"})
               vim.keymap.set('n',"<leader>lr",vim.lsp.buf.rename,{ desc = "rename symbol"})
               vim.keymap.set('n',"<leader>ls",vim.lsp.buf.document_symbol,{desc = "document symbols"})
+              vim.keymap.set('n',"<leader>li","<CMD>LspInfo<CR>",{desc = "shows lsp info"})
     end
   },
   {--crates
