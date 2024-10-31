@@ -11,6 +11,7 @@ opt.clipboard = "unnamedplus"
 if false then
 opt.mouse = ""
 end
+
 -------------------------------------------------
 -- Indentation
 -------------------------------------------------
@@ -21,6 +22,10 @@ opt.shiftwidth = tab_size
 opt.expandtab = true
 opt.smartindent = true
 
+-------------------------------------------------
+-- Folding
+-------------------------------------------------
+opt.foldmethod = "indent"
 
 -------------------------------------------------
 -- UI

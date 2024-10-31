@@ -55,6 +55,14 @@ map_key('n',"<leader>c","<CMD>bd<CR>","Close current buffer")
 map_key('n',"<leader>x","<CMD>bd!<CR>","Throw out current buffer")
 map_key('n',"<TAB>","<CMD>bnext<CR>","Go to the next buffer")
 map_key('n',"<S-TAB>","<CMD>bprevious<CR>","Go to the previous buffer")
+-- Folding
+map_key('n',"<leader>Fo","zO","Open all folds under the cursor")
+map_key('n',"<leader>Fc","zC","Close all folds under the cursor")
+map_key('n',"<leader>Fa","zA","Toggle all folds under the cursor")
+map_key('n',"<leader>FA","zR","Toggle all folds in the buffer")
+map_key('n',"<leader>Ff","zf","Create a fold under the cursor")
+map_key('n',"<leader>Fd","zd","Delete a fold under the cursor")
+map_key('n',"<leader>FD","zd","Delete a fold under the cursor")
 -------------------------------------------------
 -- Plugins keymaps
 -------------------------------------------------
