@@ -3,15 +3,24 @@ return {
     dependencies = {"nvim-tree/nvim-web-devicons" },
     config = function ()
       local dashboard = require("alpha.themes.dashboard")
+      local dashboards = {
+          {
+              "|\\  | |--- /---\\ \\    / | |\\  /|",
+              "| \\ | |--- |   |  \\  /  | | \\/ |",
+              "|  \\| |___ \\---/   \\/   | |    |",
+          },
+          {
+              " _   _         __     ___",
+              "| \\ | | ___  __\\ \\   / (_)_ __ ___",
+              "|  \\| |/ _ \\/ _ \\ \\ / /| | '_ ` _ \\",
+              "| |\\  |  __/ (_) \\ V / | | | | | | |",
+              "|_| \\_|\\___|\\___/ \\_/  |_|_| |_| |_|",
+          },
+      }
       --Header---------------------------------------------
       if true then
-        dashboard.section.header.val = {
-            " _   _         __     ___",
-            "| \\ | | ___  __\\ \\   / (_)_ __ ___",
-            "|  \\| |/ _ \\/ _ \\ \\ / /| | '_ ` _ \\",
-            "| |\\  |  __/ (_) \\ V / | | | | | | |",
-            "|_| \\_|\\___|\\___/ \\_/  |_|_| |_| |_|",
-        }
+        dashboard.section.header.val = dashboards[2]
+        table.insert(dashboard.section.header.val, string.format(string.rep("-",#dashboard.section.header.val[#dashboard.section.header.val]-#string.format("%s.%s.%s",vim.version().major,vim.version().minor,vim.version().patch)).."%s.%s.%s",vim.version().major,vim.version().minor,vim.version().patch))
       end
       --Buttons--------------------------------------------
       if true then
@@ -38,8 +47,3 @@ return {
       ]])
     end
 }
--- old headers
-          --"|\\  | /--- /---\\ \\    / | |\\  /|",
-          --"| \\ | |--- |   |  \\  /  | | \\/ |",
-          --"|  \\| \\--- \\---/   \\/   | |    |",
-          --"--------------------------------",
