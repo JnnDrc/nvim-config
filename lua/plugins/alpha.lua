@@ -3,6 +3,7 @@ return {
     dependencies = {"nvim-tree/nvim-web-devicons" },
     config = function ()
       local dashboard = require("alpha.themes.dashboard")
+      -- to quickly select saved dashboards
       local dashboards = {
           {
               "|\\  | |--- /---\\ \\    / | |\\  /|",

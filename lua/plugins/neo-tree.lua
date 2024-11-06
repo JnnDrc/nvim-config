@@ -8,5 +8,8 @@ return {
     },
     config = function()
       require("neo-tree").setup()
+      vim.cmd([[ 
+      autocmd Filetype neo-tree setlocal nofoldenable
+      ]])
     end
 }
