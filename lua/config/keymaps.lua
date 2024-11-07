@@ -5,14 +5,20 @@
 -------------------------------------------------
 -- Utils
 -------------------------------------------------
-local set = vim.keymap.set
 
-local function map_key(_mode,_keymap,_cmd,_desc,_oopts)
+---function map a key to a command or function
+---@param _mode string | table
+---@param _key string
+---@param _cmd string | function
+---@param _desc? string
+---@param _oopts? table
+local function map_key(_mode,_key,_cmd,_desc,_oopts)
+    _desc = _desc or ""
   local opts = {desc = _desc,noremap = true,silent = true}
   if _oopts then
-    opts = opts.._oopts
+    opts = vim.tbl_extend("force",opts,_oopts)
   end
-  set(_mode,_keymap,_cmd,opts)
+  vim.keymap.set(_mode,_key,_cmd,opts)
 end
 
 
@@ -27,34 +33,55 @@ if true then
   map_key('',"<left>","<nop>")
   map_key('',"<right>","<nop>")
 end
--- Window split
+
+-- seen this on this video: https://www.youtube.com/watch?v=-9lig1XPmCI
+map_key('n',"p",function()
+    local r, c = table.unpack(vim.api.nvim_win_get_cursor(0))
+    vim.cmd("put")
+    vim.api.nvim_win_set_cursor(0,{r + 1, c})
+end)
+
+
+-- Window shortcuts
 map_key('n',"<leader>wH","<CMD>new<CR>","Create a new window in horizontal")
 map_key('n',"<leader>wh","<CMD>split<CR>","Split the current window in horizontal")
 map_key('n',"<leader>wV","<CMD>vnew<CR>","Create a new window in vertical")
 map_key('n',"<leader>wv","<CMD>vsplit<CR>","Split the current window in vertical")
 map_key('n',"<leader>wc","<CMD>close<CR>","Close the current window")
--- Window save/quiting
+
 map_key('n',"<leader>www","<CMD>wall<CR>","Write all files with changes")
 map_key('n',"<leader>wqq","<CMD>qall<CR>","Close all windows and quit nvim")
 map_key('n',"<leader>wwq","<CMD>wqall<CR>","Write all files and quit nvim")
 map_key('n',"<leader>wq!","<CMD>qall!<CR>","Throw all changes and quit nvim")
--- Window movement
+
 map_key('n',"<C-H>","<C-W>h")
 map_key('n',"<C-L>","<C-W>l")
 map_key('n',"<C-J>","<C-W>j")
 map_key('n',"<C-K>","<C-W>k")
--- Window resize
+
 map_key('n',"<C-up>","<CMD>resize +1<CR>")
 map_key('n',"<C-down>","<CMD>resize -1<CR>")
 map_key('n',"<C-right>","<CMD>vertical resize +1<CR>")
 map_key('n',"<C-left>","<CMD>vertical resize -1<CR>")
+
 -- Config reload
 map_key('n',"<leader>r","<CMD>so %<CR>","Reload neovim config")
+
 -- Buffer keymaps
 map_key('n',"<leader>c","<CMD>bd<CR>","Close current buffer")
 map_key('n',"<leader>x","<CMD>bd!<CR>","Throw out current buffer")
-map_key('n',"<TAB>","<CMD>bnext<CR>","Go to the next buffer")
-map_key('n',"<S-TAB>","<CMD>bprevious<CR>","Go to the previous buffer")
+map_key('n',"<S-l>","<CMD>bnext<CR>","Go to the next buffer")
+map_key('n',"<S-h>","<CMD>bprevious<CR>","Go to the previous buffer")
+
+-- Folding
+map_key('n',"<leader>Fo","zo","Open a fold under the cursor")
+map_key('n',"<leader>Fc","zc","Close a fold under the cursor")
+map_key('n',"<leader>Fa","za","Toggle a fold under the cursor")
+map_key('n',"<leader>FA","zR","Toggle all folds in the buffer")
+map_key('n',"<leader>Ff","zf%","Create a fold under the cursor")
+map_key('n',"<leader>Fd","zd","Delete a fold under the cursor")
+map_key('n',"<leader>FD","zD","Delete all folds under the cursor")
+
 -------------------------------------------------
 -- Plugins keymaps
 -------------------------------------------------
@@ -91,7 +118,7 @@ map_key('n',"<leader>gp","<CMD>Gitsigns preview_hunk<CR>","Preview hunk")
 map_key('n',"<leader>gb","<CMD>Gitsigns toggle_current_line_blame<CR>","Toggle line blame")
 map_key('n',"<leader>gl","<CMD>Gitsigns blame_line<CR>","Blame the current line")
 -- Markview
-map_key('n',"<leader>mt","<CMD>Markview toggle<CR>","Toggle the preview mode");
+map_key('n',"<leader>mt","<CMD>Markview toggle<CR>","Toggle the preview mode")
 -------------------------------------------------
 -- Config/User keymaps
 -------------------------------------------------
