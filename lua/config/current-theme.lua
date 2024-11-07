@@ -1,1 +1,1 @@
-return "monokai-pro-octagon"
+return "gruvbox"
