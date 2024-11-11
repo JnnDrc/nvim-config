@@ -10,7 +10,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
         config = function()
             require("mason-lspconfig").setup({
-                    ensure_installed = {"lua_ls","clangd","taplo","asm_lsp"}
+                    ensure_installed = {"lua_ls","clangd","taplo","asm_lsp","zls"}
             })
         end
     },
@@ -32,30 +32,32 @@ return {
             local function exe_path(lsp)
                 local path = vim.fn.exepath(lsp)
                 if path == "" then
-                    vim.notify("Can't find " .. lsp .. "executable")
+                    vim.notify("Can't find " .. lsp .. " executable")
                 end
                 return path
             end
-            local lua_ls_path = exe_path("lua-language-server")
-            local clangd_path = exe_path("clangd")
-            local asm_lsp_path = exe_path("asm-lsp")
+
 
             lspconfig.lua_ls.setup({
-              cmd = {lua_ls_path},
+              cmd = {exe_path("lua-language-server")},
               capabilities = cmp_capabilities,
               on_attach =  default_on_attach,
             })
             lspconfig.clangd.setup({
-              cmd = {clangd_path},
+              cmd = {exe_path("clangd")},
               capabilities = cmp_capabilities,
               on_attach = default_on_attach,
             })
             lspconfig.asm_lsp.setup({
-                cmd = {asm_lsp_path},
+                cmd = {exe_path("asm-lsp")},
                 capabilities = cmp_capabilities,
                 on_attach = default_on_attach,
             })
-
+            lspconfig.zls.setup({
+                cmd = {exe_path("zls")},
+                capabilities = cmp_capabilities,
+                on_attach = default_on_attach
+            })
 
         end
     }
