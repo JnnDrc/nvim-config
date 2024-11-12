@@ -21,7 +21,8 @@ return {
       --Header---------------------------------------------
       if true then
         dashboard.section.header.val = dashboards[2]
-        table.insert(dashboard.section.header.val, string.format(string.rep("-",#dashboard.section.header.val[#dashboard.section.header.val]-#string.format("%s.%s.%s",vim.version().major,vim.version().minor,vim.version().patch)).."%s.%s.%s",vim.version().major,vim.version().minor,vim.version().patch))
+        local nvv = string.format("%s.%s.%s",vim.version().major,vim.version().minor,vim.version().patch);
+        table.insert(dashboard.section.header.val,string.rep("-",#dashboard.section.header.val[#dashboard.section.header.val]-#nvv)..nvv)
       end
       --Buttons--------------------------------------------
       if true then
