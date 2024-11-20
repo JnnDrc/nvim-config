@@ -3,7 +3,8 @@ return {
     config = function()
         require("lualine").setup({
             options = {
-                theme = "onedark"
+                theme = "gruvbox",
+                disabled_filetypes = {"alpha","neo-tree"}
             }
         })
     end
