@@ -59,6 +59,11 @@ return {
                 on_attach = default_on_attach
             })
 
+            lspconfig.fortls.setup({
+                cmd = {exe_path("fortls")},
+                capabilities = cmp_capabilities,
+                on_attach = default_on_attach
+            })
         end
     }
 }
