@@ -3,7 +3,7 @@
 -------------------------------------------------
 
 local opt = vim.opt
-
+local g = vim.g
 -------------------------------------------------
 -- General
 -------------------------------------------------
@@ -12,6 +12,8 @@ if false then
 opt.mouse = ""
 end
 
+g.loaded_netrw = nil
+g.loaded_netrwPlugin = nil
 -------------------------------------------------
 -- Indentation
 -------------------------------------------------
@@ -21,7 +23,6 @@ opt.softtabstop = tab_size
 opt.shiftwidth = tab_size
 opt.expandtab = true
 opt.smartindent = true
-
 -------------------------------------------------
 -- Folding
 -------------------------------------------------
