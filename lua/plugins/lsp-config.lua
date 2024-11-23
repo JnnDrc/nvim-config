@@ -33,37 +33,46 @@ return {
                 local path = vim.fn.exepath(lsp)
                 if path == "" then
                     vim.notify("Can't find " .. lsp .. " executable")
+                    return nil
                 end
                 return path
             end
 
-
-            lspconfig.lua_ls.setup({
-              cmd = {exe_path("lua-language-server")},
-              capabilities = cmp_capabilities,
-              on_attach =  default_on_attach,
-            })
-            lspconfig.clangd.setup({
-              cmd = {exe_path("clangd")},
-              capabilities = cmp_capabilities,
-              on_attach = default_on_attach,
-            })
-            lspconfig.asm_lsp.setup({
-                cmd = {exe_path("asm-lsp")},
-                capabilities = cmp_capabilities,
-                on_attach = default_on_attach,
-            })
-            lspconfig.zls.setup({
-                cmd = {exe_path("zls")},
-                capabilities = cmp_capabilities,
-                on_attach = default_on_attach
-            })
-
-            lspconfig.fortls.setup({
-                cmd = {exe_path("fortls")},
-                capabilities = cmp_capabilities,
-                on_attach = default_on_attach
-            })
+            if exe_path("lua-language-server") ~= nil then
+                lspconfig.lua_ls.setup({
+                  cmd = {exe_path("lua-language-server")},
+                  capabilities = cmp_capabilities,
+                  on_attach =  default_on_attach,
+                })
+            end
+            if exe_path("clangd") ~= nil then
+                lspconfig.clangd.setup({
+                  cmd = {exe_path("clangd")},
+                  capabilities = cmp_capabilities,
+                  on_attach = default_on_attach,
+                })
+            end
+            if exe_path("asm-lsp") ~= nil then
+                lspconfig.asm_lsp.setup({
+                    cmd = {exe_path("asm-lsp")},
+                    capabilities = cmp_capabilities,
+                    on_attach = default_on_attach,
+                })
+            end
+            if exe_path("zls") ~= nil then
+                lspconfig.zls.setup({
+                    cmd = {exe_path("zls")},
+                    capabilities = cmp_capabilities,
+                    on_attach = default_on_attach
+                })
+            end
+            if exe_path("fortls") ~= nil then
+                lspconfig.fortls.setup({
+                    cmd = {exe_path("fortls")},
+                    capabilities = cmp_capabilities,
+                    on_attach = default_on_attach
+                })
+            end
         end
     }
 }
