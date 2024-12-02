@@ -5,11 +5,12 @@ local start_time = vim.loop.hrtime()
 -------------------------------------------------
 -- Init core
 -------------------------------------------------
-require("config.lazy")         -- Lazy.nvim set-up
-require("config.options")      -- vim options
-require("config.colorscheme")  -- colorscheme config
-require("config.keymaps")      -- re-mapings
-require("config.usercommands") -- user defined commands
+require("config.profiler")      -- Profiler startup
+require("config.lazy")          -- Lazy.nvim set-up
+require("config.options")       -- vim options
+require("config.colorscheme")   -- colorscheme config
+require("config.keymaps")       -- re-mapings
+require("config.usercommands")  -- user defined commands
 -------------------------------------------------
 -- Init plugins
 -------------------------------------------------

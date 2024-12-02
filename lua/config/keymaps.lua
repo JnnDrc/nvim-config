@@ -54,15 +54,15 @@ map_key('n',"<leader>wqq","<CMD>qall<CR>","Close all windows and quit nvim")
 map_key('n',"<leader>wwq","<CMD>wqall<CR>","Write all files and quit nvim")
 map_key('n',"<leader>wq!","<CMD>qall!<CR>","Throw all changes and quit nvim")
 
-map_key('n',"<C-H>","<C-W>h")
-map_key('n',"<C-L>","<C-W>l")
-map_key('n',"<C-J>","<C-W>j")
-map_key('n',"<C-K>","<C-W>k")
+map_key({'n','t'},"<C-H>","<C-W>h")
+map_key({'n','t'},"<C-L>","<C-W>l")
+map_key({'n','t'},"<C-J>","<C-W>j")
+map_key({'n','t'},"<C-K>","<C-W>k")
 
-map_key('n',"<C-up>","<CMD>resize +1<CR>")
-map_key('n',"<C-down>","<CMD>resize -1<CR>")
-map_key('n',"<C-right>","<CMD>vertical resize +1<CR>")
-map_key('n',"<C-left>","<CMD>vertical resize -1<CR>")
+map_key({'n','t'},"<C-up>","<CMD>resize +1<CR>")
+map_key({'n','t'},"<C-down>","<CMD>resize -1<CR>")
+map_key({'n','t'},"<C-right>","<CMD>vertical resize +1<CR>")
+map_key({'n','t'},"<C-left>","<CMD>vertical resize -1<CR>")
 
 -- Config reload
 map_key('n',"<leader>r","<CMD>so %<CR>","Reload neovim config")

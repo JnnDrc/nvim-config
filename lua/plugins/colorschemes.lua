@@ -10,12 +10,6 @@ return {
         "morhetz/gruvbox",
     },
     {
-        "loctvl842/monokai-pro.nvim",
-    },
-    {
-        -- "shaunsingh/nord.nvim",
-    },
-    {
         "doums/darcula",
     },
     {
