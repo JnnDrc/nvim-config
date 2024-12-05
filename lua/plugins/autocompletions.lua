@@ -14,6 +14,33 @@ return {
     config = function()
       local cmp = require("cmp")
       local types = require("cmp.types")
+      local icon_map = {
+        Class = "󰠱",
+        Color = "󰏘",
+        Constant = "󰏿",
+        Constructor = "",
+        Enum = "",
+        EnumMember = "󰈍",
+        Event = "",
+        Field = "󰜢",
+        File = "󰈙",
+        Folder = "󰉋",
+        Function = "󰊕",
+        Interface = "",
+        Keyword = "󰌋",
+        Method = "󰆧",
+        Module = "",
+        Operator = "󰆕",
+        Property = "󰜢",
+        Reference = "󰈇",
+        Snippet = "",
+        Text = "󰉿",
+        TypeParameter = "",
+        Struct = "󰙅",
+        Unit = "󰑭",
+        Value = "󰎠",
+        Variable = "󰀫",
+      }
       require("luasnip.loaders.from_vscode").lazy_load()
       cmp.setup({
         snippet = {
@@ -23,8 +50,34 @@ return {
         end,
         },
         window = {
-          completion = cmp.config.window.bordered(),
+          completion = cmp.config.window.bordered({
+                border = "double",
+                winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuThumb,Search:None"
+          }),
           documentation = cmp.config.window.bordered(),
+        },
+        formatting = {
+            format = function (entry,vim_item)
+                vim_item.kind = (icon_map[vim_item.kind] or "?") .. ' (' .. vim_item.kind .. ')'
+                --//--
+                local item = entry:get_completion_item()
+                if item.detail then
+                    vim_item.menu = "-> " .. item.detail
+                    vim_item.menu = vim_item.menu .. ' [' .. entry.source.name .. ']'
+                else
+                    vim_item.menu = ' [' .. entry.source.name .. ']'
+                end
+                --//--
+                local function trim(txt,max)
+                    if txt and #txt > max then
+                        txt = txt:sub(1,max) .. ""
+                    end
+                    return txt
+                end
+                vim_item.abbr = trim(vim_item.abbr,32);
+
+                return vim_item
+            end
         },
         mapping = cmp.mapping.preset.insert({
           ['<C-b>'] = cmp.mapping.scroll_docs(-4),

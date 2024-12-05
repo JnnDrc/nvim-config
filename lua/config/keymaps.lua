@@ -67,6 +67,10 @@ map_key({'n','t'},"<C-left>","<CMD>vertical resize -1<CR>")
 -- Config reload
 map_key('n',"<leader>r","<CMD>so %<CR>","Reload neovim config")
 
+-- Scrooling
+map_key('n',"<S-k>","<C-y>")
+map_key('n',"<S-j>","<C-e>")
+
 -- Buffer keymaps
 map_key('n',"<leader>c","<CMD>bd<CR>","Close current buffer")
 map_key('n',"<leader>x","<CMD>bd!<CR>","Throw out current buffer")

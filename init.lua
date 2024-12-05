@@ -1,11 +1,10 @@
--------------------------------------------------
+------------------------------------------------
 -- Init file!
 -------------------------------------------------
 local start_time = vim.loop.hrtime()
 -------------------------------------------------
 -- Init core
 -------------------------------------------------
-require("config.profiler")      -- Profiler startup
 require("config.lazy")          -- Lazy.nvim set-up
 require("config.options")       -- vim options
 require("config.colorscheme")   -- colorscheme config
@@ -23,4 +22,3 @@ vim.notify = require("notify")          -- set notifification system to notify.n
 SetColorScheme(require("config.current-theme")) -- no args: default, see config.colorscheme
 --Print-startup-time-----------------------------
 vim.notify(string.format("Neovim loaded in %.4fms",((vim.loop.hrtime() - start_time)/1e6)),"info",{title = "Welcome again!"})
-
