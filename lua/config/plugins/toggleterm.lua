@@ -3,13 +3,29 @@
 -------------------------------------------------
 local Terminal = require("toggleterm.terminal").Terminal
 
-local lazygit = Terminal:new({
-  cmd = "lazygit",
-  hidden = true,
-  direction = "float",
-})
+if vim.fn.exepath("lazygit") ~= "" then
+    local lazygit = Terminal:new({
+      cmd = "lazygit",
+      hidden = true,
+      direction = "float",
+    })
 
-function _Lazygit_toggle()
-  lazygit:toggle()
+    function _Lazygit_toggleterm()
+      lazygit:toggle()
+    end
+    vim.api.nvim_set_keymap('n',"<leader>tg","<CMD>lua _Lazygit_toggleterm()<CR>",
+    {desc = "lazygit",noremap = true, silent = true})
 end
-vim.api.nvim_set_keymap('n',"<leader>tg","<CMD>lua _Lazygit_toggle()<CR>",{desc = "lazygit",noremap = true, silent = true})
+
+if vim.fn.exepath("yazi") ~= "" then
+    local yazi = Terminal:new({
+        cmd = "yazi",
+        hidden = true,
+        direction = "float",
+    })
+    function _Yazi_toggleterm()
+        yazi:toggle()
+    end
+    vim.api.nvim_set_keymap('n',"<leader>ty","<CMD> lua _Yazi_toggleterm()<CR>",
+    {desc = "yazi fm",noremap = true,silent = true})
+end

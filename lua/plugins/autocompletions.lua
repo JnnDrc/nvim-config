@@ -43,6 +43,9 @@ return {
       }
       require("luasnip.loaders.from_vscode").lazy_load()
       cmp.setup({
+        completion = {
+            autocomplete = true, -- togglebable completion(C-c): false=true, true=false
+        },
         snippet = {
         -- REQUIRED - you must specify a snippet engine
         expand = function(args)
@@ -58,16 +61,7 @@ return {
         },
         formatting = {
             format = function (entry,vim_item)
-                vim_item.kind = (icon_map[vim_item.kind] or "?") .. ' (' .. vim_item.kind .. ')'
-                --//--
-                local item = entry:get_completion_item()
-                if item.detail then
-                    vim_item.menu = "-> " .. item.detail
-                    vim_item.menu = vim_item.menu .. ' [' .. entry.source.name .. ']'
-                else
-                    vim_item.menu = ' [' .. entry.source.name .. ']'
-                end
-                --//--
+                --//-- abbr
                 local function trim(txt,max)
                     if txt and #txt > max then
                         txt = txt:sub(1,max) .. ""
@@ -75,6 +69,15 @@ return {
                     return txt
                 end
                 vim_item.abbr = trim(vim_item.abbr,32);
+                --//-- kind
+                vim_item.kind = (icon_map[vim_item.kind] or "?") .. ' (' .. vim_item.kind .. ')'
+                --//-- menu
+                local item = entry:get_completion_item()
+                if item.detail then
+                    vim_item.menu = "-> " .. item.detail.. ' [' .. entry.source.name .. ']'
+                else
+                    vim_item.menu = '[' .. entry.source.name .. ']'
+                end
 
                 return vim_item
             end
@@ -84,9 +87,9 @@ return {
           ['<C-f>'] = cmp.mapping.scroll_docs(4),
           ['<Tab>'] = cmp.mapping.select_next_item({ behavior = types.cmp.SelectBehavior.Insert }),
           ['<S-Tab>'] = cmp.mapping.select_prev_item({ behavior = types.cmp.SelectBehavior.Insert }),
-          ['<C-Space>'] = cmp.mapping.complete(),
+          ['<C-c>'] = cmp.mapping.complete(),
           ['<C-e>'] = cmp.mapping.abort(),
-          ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+          ['<CR>'] = cmp.mapping.confirm({ select = true }),
         }),
         sources = cmp.config.sources({
           { name = 'nvim_lsp'},
@@ -96,5 +99,6 @@ return {
         })
       })
     end
+
   },
 }
