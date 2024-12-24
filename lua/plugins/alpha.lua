@@ -1,6 +1,6 @@
 return {
     "goolord/alpha-nvim",
-    dependencies = {"nvim-tree/nvim-web-devicons" },
+    dependencies = {"echasnovski/mini.icons" },
     config = function ()
       local dashboard = require("alpha.themes.dashboard")
       -- to quickly select saved dashboards
@@ -17,6 +17,14 @@ return {
               "| |\\  |  __/ (_) \\ V / | | | | | | |",
               "|_| \\_|\\___|\\___/ \\_/  |_|_| |_| |_|",
           },
+          {
+            "neoneo     neo neoneoneoneo    neoneo    vim          vim vim vim",
+            "neo neo    neo neo           neo    neo   vim        vim      vimvimvimvimvim",
+            "neo  neo   neo neoneoneoneo neo      neo   vim      vim   vim vim   vim    vim",
+            "neo   neo  neo neoneoneoneo neo      neo    vim    vim    vim vim   vim    vim",
+            "neo    neo neo neo           neo    neo      vim  vim     vim vim   vim    vim",
+            "neo     neoneo neoneoneoneo    neoneo         vimvim      vim vim   vim    vim",
+          }
       }
     --Header---------------------------------------------
     if true then

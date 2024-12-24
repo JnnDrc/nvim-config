@@ -33,8 +33,18 @@ local function _clear_reg(reg)
     vim.notify("Cleared register ".. reg,"info",{title = "Clear register"})
 end
 create_command("ClearRegister",_clear_reg,{nargs = 1})
+-- set treesitter
+local function _ts(parser)
+    require('nvim-treesitter.highlight').attach(0, parser)
+end
+create_command("TSParser",_ts,{nargs = 1})
 -- bunny
 local function _bunny()
     vim.notify("(\\(\\\n( -.-)\no_(\")(\")"  )
 end
 create_command("Bun",_bunny)
+
+local function _Buf()
+    print("nbuf: "..tostring(vim.api.nvim_get_current_buf()))
+end
+create_command("Buf",_Buf)
