@@ -1,3 +1,4 @@
+-------------------------------------------------
 -- Init file!
 -------------------------------------------------
 local start_time = vim.uv.hrtime()
@@ -14,12 +15,12 @@ require("config.usercommands")  -- user defined commands
 -------------------------------------------------
 require("config.plugins.toggleterm")    -- toggleterm special terminals
 vim.notify = require("notify")          -- set notifification system to notify.nvim
-require("plugin.flowin")
-require("plugin.fterm")
+require("plugin.flowin")                -- little plugin for make floating windows(my first try to make a plugin)
+require("plugin.fterm")                 -- terminal using flowin
 -------------------------------------------------
 -- Other options
 -------------------------------------------------
 --Colorscheme------------------------------------
 SetColorScheme(require("config.current-theme")) -- no args: default, see config.colorscheme
 --Print-startup-time-----------------------------
-vim.notify(string.format("Neovim loaded in %.4fms",((vim.uv.hrtime() - start_time)/1e6)),"info",{title = "Welcome again!"})
+vim.notify(string.format("Neovim loaded in %.4fms",((vim.uv.hrtime() - start_time)/1e6)),vim.log.levels.INFO,{title = "Welcome again!"})

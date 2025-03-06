@@ -2,7 +2,7 @@
 
 local fw = require("plugin.flowin")
 
-local _fterm = {buf = -1, win = -1}
+local _fterm = fw.window()
 
 vim.api.nvim_create_user_command("FTerm",
 function()

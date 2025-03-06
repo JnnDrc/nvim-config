@@ -4,7 +4,15 @@
 
 local M = {}
 
+---@class winbuf
+---@field win integer
+---@field buf integer
+
+---@return winbuf
+function M.window() return {win = -1, buf = -1}end
+
 ---@param oopts? table
+---@return winbuf
 function M.create_window(oopts)
     oopts = oopts or {}
 
@@ -38,6 +46,5 @@ function M.create_window(oopts)
 
     return {buf = buf, win = win}
 end
-
 
 return M

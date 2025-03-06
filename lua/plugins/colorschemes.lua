@@ -6,23 +6,28 @@ return {
         lazy = false,
         priority = 1000,
     },
-    -- {
-    --     "morhetz/gruvbox",
-    --     name = "gruvbox",
-    --     lazy = false,
-    --     priority = 1000,
-    -- },
     {
-        "doums/darcula",
-        name = "darcula",
+        "morhetz/gruvbox",
+        name = "gruvbox",
         lazy = false,
         priority = 1000,
     },
+    -- {
+    --     "doums/darcula",
+    --     name = "darcula",
+    --     lazy = false,
+    --     priority = 1000,
+    -- },
     {
         "navarasu/onedark.nvim",
         name = "onedark",
         lazy = false,
         priority = 1000,
+        config = function ()
+            require('onedark').setup({
+                style = 'darker'
+            })
+        end
     },
     -- {
     --     'projekt0n/github-nvim-theme',

@@ -49,4 +49,4 @@ vim.api.nvim_create_user_command("ColorsChange",function(opts)
   ChangeColorScheme(opts.args:match("([^ ]+)[ ]*(.*)"))
 end,{nargs = '?'}) -- nvim command
 vim.api.nvim_create_user_command("ColorsSelect",SelectColorScheme,{nargs = 0})
--------------------------------------------------
+------------------------------------------------

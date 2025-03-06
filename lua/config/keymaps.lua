@@ -35,11 +35,11 @@ if true then
 end
 
 -- seen this on this video: https://www.youtube.com/watch?v=-9lig1XPmCI
-map_key('n',"p",function()
-    local r, c = table.unpack(vim.api.nvim_win_get_cursor(0))
-    vim.cmd("put")
-    vim.api.nvim_win_set_cursor(0,{r + 1, c})
-end)
+-- map_key('n',"p",function()
+--     local r, c = table.unpack(vim.api.nvim_win_get_cursor(0))
+--     vim.cmd("put")
+--     vim.api.nvim_win_set_cursor(0,{r + 1, c})
+-- end)
 
 
 -- Window shortcuts
@@ -103,10 +103,11 @@ map_key('n',"<leader>e","<CMD>Neotree toggle<CR>","Toggle Neotree")
 -- Oil
 map_key('n','<leader>o',"<CMD>Oil<CR>","Toggle oil")
 -- Telescope
-map_key('n',"<leader>gc","<CMD>Telescope git_commits<CR>","Show git commits")
-map_key('n',"<leader>gr","<CMD>Telescope git_branches<CR>","Show git branches")
-map_key('n',"<leader>gs","<CMD>Telescope git_status<CR>","Show git status")
-map_key('n',"<leader>n","<CMD>Telescope notify<CR>","See notify history")
+map_key('n',"<leader>gc","<CMD>Telescope git_commits theme=ivy<CR>","Show git commits")
+map_key('n',"<leader>gr","<CMD>Telescope git_branches theme=ivy<CR>","Show git branches")
+map_key('n',"<leader>gs","<CMD>Telescope git_status theme=ivy<CR>","Show git status")
+map_key('n',"<leader>n","<CMD>Telescope notify theme=dropdown<CR>","See notify history")
+map_key('n',"<leader>ft","<CMD>TodoTelescope theme=ivy<CR>","Find TODO tags")
 -- ToggleTerm
 --/-- open default terminals
 map_key('n',"<leader>th","<CMD>ToggleTerm direction=horizontal<CR>","Toggle horizontal terminal")
@@ -132,3 +133,5 @@ map_key('n',"<leader>mt","<CMD>Markview toggle<CR>","Toggle the preview mode")
 -------------------------------------------------
 -- Themes
 map_key('n',"<leader>C","<CMD>ColorsSelect<CR>","Change Colorscheme(UI)")
+-- Obscure commands (double leader)
+map_key('n',"<leader><leader>s","<CMD>Rshl<CR>","Reset the search highlight")

@@ -1,1 +1,1 @@
-return "onedark"
+return "gruvbox"

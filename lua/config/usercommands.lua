@@ -30,7 +30,7 @@ create_command("Rshl",_rshl)
 -- clear register
 local function _clear_reg(reg)
     vim.cmd("let @" .. reg .. " = ''")
-    vim.notify("Cleared register ".. reg,"info",{title = "Clear register"})
+    vim.notify("Cleared register ".. reg,vim.log.levels.INFO,{title = "Clear register"})
 end
 create_command("ClearRegister",_clear_reg,{nargs = 1})
 -- set treesitter
@@ -48,3 +48,44 @@ local function _Buf()
     print("nbuf: "..tostring(vim.api.nvim_get_current_buf()))
 end
 create_command("Buf",_Buf)
+
+local function _XXD()
+    local xxd = vim.fn.exepath("xxd")
+    if not xxd then
+        vim.notify("xxd not found",vim.log.levels.ERROR,{title = "xxd dump"})
+    end
+
+    local buf = vim.fn.expand("%:p")
+    local dump = vim.fn.fnamemodify(buf,":r") .. ".dump"
+    local cmd = string.format("silent !xxd %s %s",buf,dump)
+
+    vim.cmd(cmd)
+    vim.cmd('redraw')
+
+    if vim.v.shell_error ~= 0 then
+        vim.notify('Failed to dump',vim.log.levels.ERROR,{title = "xxd dump"})
+    else
+        vim.notify('Dump created: ' .. dump,vim.log.levels.INFO,{title = "xxd dump"})
+    end
+end
+create_command("Dump",_XXD,{desc = "Hexdump current file"})
+local function _XXDR()
+    local xxd = vim.fn.exepath("xxd")
+    if not xxd then
+        vim.notify("xxd not found",vim.log.levels.ERROR,{title = "xxd dump"})
+    end
+
+    local buf = vim.fn.expand("%:p")
+    local bin = vim.fn.fnamemodify(buf,":r") .. ".bin"
+    local cmd = string.format("silent !xxd -r %s %s",buf,bin)
+
+    vim.cmd(cmd)
+    vim.cmd('redraw')
+
+    if vim.v.shell_error ~= 0 then
+        vim.notify('Failed to make binary',vim.log.levels.ERROR,{title = "xxd dump"})
+    else
+        vim.notify('Undumped: ' .. bin,vim.log.levels.INFO,{title = "xxd dump"})
+    end
+end
+create_command("Undump",_XXDR,{desc = "Undump the current file(must be an xxd hexdump)"})

@@ -51,7 +51,8 @@ return {
             require("luasnip.loaders.from_vscode").lazy_load()
             cmp.setup({
                 completion = {
-                    --           autocomplete = false --uncomment to make autocompletes optional/toggleable
+                    --autocomplete = false --uncomment to make autocompletes optional/toggleable
+                    completeopt = 'menu,menuone,noselect'
                 },
                 snippet = {
                     -- REQUIRED - you must specify a snippet engine
@@ -91,8 +92,8 @@ return {
                     end
                 },
                 mapping = cmp.mapping.preset.insert({
-                    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
                     ['<C-f>'] = cmp.mapping.scroll_docs(4),
+                    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
                     ['<Tab>'] = cmp.mapping.select_next_item({ behavior = types.cmp.SelectBehavior.Insert }),
                     ['<S-Tab>'] = cmp.mapping.select_prev_item({ behavior = types.cmp.SelectBehavior.Insert }),
                     ['<C-c>'] = cmp.mapping.complete(),

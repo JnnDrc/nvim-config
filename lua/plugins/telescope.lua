@@ -1,15 +1,32 @@
 return {
     {
         "nvim-telescope/telescope.nvim",
-        tag = "0.1.8",
+        tag = "0.1.x",
         dependencies = {"nvim-lua/plenary.nvim"},
         config = function()
-            local telescope_builtin = require("telescope.builtin")
-            vim.keymap.set('n',"<leader>ff",telescope_builtin.find_files,{desc = "find files"})
-            vim.keymap.set('n',"<leader>fg",telescope_builtin.live_grep,{ desc = "live grep"})
-            vim.keymap.set('n',"<leader>fb",telescope_builtin.buffers,{ desc = "find buffers"})
-            vim.keymap.set('n',"<leader>fh",telescope_builtin.help_tags,{ desc = "help tags"})
-            vim.keymap.set('n',"<leader>ft","<CMD>TodoTelescope<CR>")
+            require("telescope").setup({
+                pickers = {
+                    find_files = {
+                        theme = "ivy"
+                    },
+                    buffers = {
+                        theme = "ivy"
+                    },
+                    live_grep = {
+                        theme = "ivy"
+                    },
+                    keymaps = {
+                        theme = "dropdown"
+                    }
+                }
+            })
+            local builtin = require("telescope.builtin")
+
+            vim.keymap.set('n',"<leader>ff",builtin.find_files,{desc = "find files"})
+            vim.keymap.set('n',"<leader>fg",builtin.live_grep,{ desc = "grep in cwd tree"})
+            vim.keymap.set('n',"<leader>fb",builtin.buffers,{ desc = "find buffers"})
+            vim.keymap.set('n',"<leader>fh",builtin.help_tags,{ desc = "help tags (docs)"})
+            vim.keymap.set('n',"<leader>fk",builtin.keymaps,{desc = "nvim keymaps"})
         end
     },
     {
@@ -18,7 +35,7 @@ return {
             require("telescope").setup({
                 extensions = {
                     ["ui-select"] = {
-                            require("telescope.themes").get_dropdown {
+                            require("telescope.themes").get_cursor {
                         }
                     }
                 }
