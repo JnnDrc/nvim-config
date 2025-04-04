@@ -69,7 +69,7 @@ map_key({'n','t'},"<C-left>","<CMD>vertical resize -1<CR>")
 map_key('t',"<ESC><ESC>","<C-\\><C-n>","Escape terminal")
 
 -- Config reload
-map_key('n',"<leader>r","<CMD>so %<CR>","Reload neovim config")
+map_key('n',"<leader>r","<CMD>so %<CR>","source current file")
 
 -- Scrooling
 map_key('n',"<S-k>","<C-y>")

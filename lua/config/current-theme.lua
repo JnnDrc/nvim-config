@@ -1,1 +1,1 @@
-return "gruvbox"
+return "gruber-darker"
