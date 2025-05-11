@@ -1,1 +1,1 @@
-return "gruber-darker"
+return "accent"

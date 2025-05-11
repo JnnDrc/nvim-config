@@ -1,5 +1,6 @@
 return {
   -- set the colorscheme in init.lua
+  -- colorfulls
     {
         "catppuccin/nvim",
         lazy = false,
@@ -10,11 +11,6 @@ return {
         lazy = false,
         priority = 1000,
     },
-    -- {
-    --     "doums/darcula",
-    --     lazy = false,
-    --     priority = 1000,
-    -- },
     {
         "navarasu/onedark.nvim",
         lazy = false,
@@ -26,13 +22,23 @@ return {
         end
     },
     {
+        "rose-pine/neovim",
+        lazy = false,
+        priority = 1000,
+    },
+    -- darkies
+    {
         "blazkowolf/gruber-darker.nvim",
         lazy = false,
         priority = 1000,
-    }
-    -- {
-    --     'projekt0n/github-nvim-theme',
-    --     lazy = false,
-    --     priority = 1000,
-    -- },
+    },
+    {
+        "Alligator/accent.vim",
+        lazy = false,
+        priority = 1000,
+        config = function()
+            vim.cmd "let g:accent_colour = 'yellow' "
+            vim.cmd "let g:accent_darken = 1"
+        end
+    },
 }

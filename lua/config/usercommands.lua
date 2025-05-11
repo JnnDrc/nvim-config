@@ -18,15 +18,10 @@ end
 -- Functions
 -------------------------------------------------
 
-local function _throw_quit()
-    vim.cmd("q!")
-end
-create_command("Q",_throw_quit)
+-- force quit
+create_command("Q",function () vim.cmd("q!") end)
 -- re-set search highlight
-local function _rshl()
-    vim.cmd("let @/ = \"\"")
-end
-create_command("Rshl",_rshl)
+create_command("Rshl",function () vim.cmd("let @/ = \"\"") end)
 -- clear register
 local function _clear_reg(reg)
     vim.cmd("let @" .. reg .. " = ''")
@@ -43,11 +38,8 @@ local function _bunny()
     vim.notify("(\\(\\\n( -.-)\no_(\")(\")"  )
 end
 create_command("Bun",_bunny)
-
-local function _Buf()
-    print("nbuf: "..tostring(vim.api.nvim_get_current_buf()))
-end
-create_command("Buf",_Buf)
+-- print current buffer nbuf
+create_command("Buf",function () print("nbuf: "..tostring(vim.api.nvim_get_current_buf())) end)
 
 local function _XXD()
     local xxd = vim.fn.exepath("xxd")
@@ -72,7 +64,7 @@ create_command("Dump",_XXD,{desc = "Hexdump current file"})
 local function _XXDR()
     local xxd = vim.fn.exepath("xxd")
     if not xxd then
-        vim.notify("xxd not found",vim.log.levels.ERROR,{title = "xxd dump"})
+        vim.notify("xxd not found",vim.log.levels.ERROR,{title = "xxd undump"})
     end
 
     local buf = vim.fn.expand("%:p")
@@ -83,9 +75,9 @@ local function _XXDR()
     vim.cmd('redraw')
 
     if vim.v.shell_error ~= 0 then
-        vim.notify('Failed to make binary',vim.log.levels.ERROR,{title = "xxd dump"})
+        vim.notify('Failed to make binary',vim.log.levels.ERROR,{title = "xxd undump"})
     else
-        vim.notify('Undumped: ' .. bin,vim.log.levels.INFO,{title = "xxd dump"})
+        vim.notify('Undumped: ' .. bin,vim.log.levels.INFO,{title = "xxd undump"})
     end
 end
 create_command("Undump",_XXDR,{desc = "Undump the current file(must be an xxd hexdump)"})

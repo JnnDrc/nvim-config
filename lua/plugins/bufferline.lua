@@ -7,7 +7,7 @@ return {
             options = {
                 themable = true,
                 diagnostics = 'nvim_lsp',
-                separator_style = "slope",
+                separator_style = "thick",
                 custom_filter = function (nbuf)
                     if not vim.bo[nbuf].buflisted or vim.bo[nbuf].buftype == "nofile" then
                         return false
