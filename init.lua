@@ -13,7 +13,7 @@ require("config.usercommands")  -- user defined commands
 -------------------------------------------------
 -- Init plugins
 -------------------------------------------------
-require("config.plugins.toggleterm")    -- toggleterm special terminals
+-- require("config.plugins.toggleterm")    -- toggleterm special terminals
 vim.notify = require("notify")          -- set notifification system to notify.nvim
 require("plugin.flowin")                -- little plugin for make floating windows(my first try to make a plugin)
 require("plugin.fterm")                 -- terminal using flowin
