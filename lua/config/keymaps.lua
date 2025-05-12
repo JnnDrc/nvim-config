@@ -110,18 +110,18 @@ map_key('n',"<leader>n","<CMD>Telescope notify theme=dropdown<CR>","See notify h
 map_key('n',"<leader>ft","<CMD>TodoTelescope theme=ivy<CR>","Find TODO tags")
 -- ToggleTerm
 --/-- open default terminals
-map_key('n',"<leader>th","<CMD>ToggleTerm direction=horizontal<CR>","Toggle horizontal terminal")
-map_key('n',"<leader>tv","<CMD>ToggleTerm direction=vertical size=60<CR>","Toggle vertical terminal")
-map_key('n',"<leader>tf","<CMD>ToggleTerm direction=float<CR>","Toggle floating terminal")
+-- map_key('n',"<leader>th","<CMD>ToggleTerm direction=horizontal<CR>","Toggle horizontal terminal")
+-- map_key('n',"<leader>tv","<CMD>ToggleTerm direction=vertical size=60<CR>","Toggle vertical terminal")
+-- map_key('n',"<leader>tf","<CMD>ToggleTerm direction=float<CR>","Toggle floating terminal")
 --/-- open interpreter terminal
-map_key('n',"<leader>tn","<CMD>TermExec cmd=\"node\"<CR>","Toggle NodeJS")
-map_key('n',"<leader>tp","<CMD>TermExec cmd=\"python\"<CR>","Toggle Python")
-map_key('n',"<leader>tl","<CMD>TermExec cmd=\"lua\"<CR>","Toggle Lua")
-map_key('n',"<leader>tu","<CMD>TermExec cmd=\"nu\"<CR>","Toggle Nushell")
-map_key("n","<leader>tz","<CMD>TermExec cmd=\"zsh\"<CR>","Toggle Zsh")
---/-- termianl section
-map_key('n',"<F7>","<CMD>ToggleTerm<CR>","Toggle last terminal section")
-map_key('t',"<ESC>","<CMD>ToggleTerm<CR>","Close terminal")
+-- map_key('n',"<leader>tn","<CMD>TermExec cmd=\"node\"<CR>","Toggle NodeJS")
+-- map_key('n',"<leader>tp","<CMD>TermExec cmd=\"python\"<CR>","Toggle Python")
+-- map_key('n',"<leader>tl","<CMD>TermExec cmd=\"lua\"<CR>","Toggle Lua")
+-- map_key('n',"<leader>tu","<CMD>TermExec cmd=\"nu\"<CR>","Toggle Nushell")
+-- map_key("n","<leader>tz","<CMD>TermExec cmd=\"zsh\"<CR>","Toggle Zsh")
+--/-- termianal section
+-- map_key('n',"<F7>","<CMD>ToggleTerm<CR>","Toggle last terminal section")
+-- map_key('t',"<ESC>","<CMD>ToggleTerm<CR>","Close terminal")
 -- Gitsigns
 map_key('n',"<leader>gp","<CMD>Gitsigns preview_hunk<CR>","Preview hunk")
 map_key('n',"<leader>gb","<CMD>Gitsigns toggle_current_line_blame<CR>","Toggle line blame")
