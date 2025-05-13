@@ -2,6 +2,8 @@
 return {
     --vim mov
     {"matze/vim-move"},
+    -- markview
+    {"OXY2DEV/markview.nvim"},
     {
         -- mini.icons
         'echasnovski/mini.icons',
