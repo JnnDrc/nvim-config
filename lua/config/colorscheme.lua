@@ -14,7 +14,7 @@ local function SelectColorScheme()
     vim.ui.select(installed_themes, {
         prompt = "Choose theme:",
         format_item = function(theme)
-            return "> " .. theme
+            return "- " .. theme
         end,
     }, function(choice)
         if choice then
@@ -36,7 +36,7 @@ function ChangeColorScheme(cs)
     vim.cmd.colorscheme(cs)
 end
 
--- This function change the colorscheme to the actual section
+-- This function change the colorscheme for the current section
 --- @param cs string | nil colorscheme
 function SetColorScheme(cs)
     cs = cs or default
