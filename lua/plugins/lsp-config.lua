@@ -2,8 +2,7 @@ return {
     {
         "williamboman/mason.nvim",
         config = function()
-            require("mason").setup({
-            })
+            require("mason").setup({})
         end
     },
     {
@@ -102,6 +101,13 @@ return {
             if exe_path("gopls") ~= nil then
                 lspconfig.gopls.setup({
                     cmd = { exe_path("gopls") },
+                    capabilities = cmp_capabilities,
+                    on_attach = default_on_attach,
+                })
+            end
+            if exe_path("arduino-language-server") ~= nil then
+                lspconfig.arduino_language_server.setup({
+                    cmd = {exe_path("arduino-language-server")},
                     capabilities = cmp_capabilities,
                     on_attach = default_on_attach,
                 })
