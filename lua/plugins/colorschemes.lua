@@ -1,6 +1,6 @@
 return {
-  -- set the colorscheme in init.lua
-  -- colorfulls
+    -- set the colorscheme in init.lua
+    -- colorfulls
     {
         "catppuccin/nvim",
         lazy = false,
@@ -15,7 +15,7 @@ return {
         "navarasu/onedark.nvim",
         lazy = false,
         priority = 1000,
-        config = function ()
+        config = function()
             require('onedark').setup({
                 style = 'darker'
             })

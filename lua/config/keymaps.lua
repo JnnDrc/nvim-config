@@ -34,14 +34,6 @@ if true then
   map_key('',"<right>","<nop>")
 end
 
--- seen this on this video: https://www.youtube.com/watch?v=-9lig1XPmCI
--- map_key('n',"p",function()
---     local r, c = table.unpack(vim.api.nvim_win_get_cursor(0))
---     vim.cmd("put")
---     vim.api.nvim_win_set_cursor(0,{r + 1, c})
--- end)
-
-
 -- Window shortcuts
 map_key('n',"<leader>wH","<CMD>new<CR>","Create a new window in horizontal")
 map_key('n',"<leader>wh","<CMD>split<CR>","Split the current window in horizontal")
@@ -69,11 +61,25 @@ map_key({'n','t'},"<C-left>","<CMD>vertical resize -1<CR>")
 map_key('t',"<ESC><ESC>","<C-\\><C-n>","Escape terminal")
 
 -- Config reload
-map_key('n',"<leader>r","<CMD>so %<CR>","source current file")
+map_key('n',"<leader>rf","<CMD>so %<CR>","source current file")
+map_key('n',"<leader>rr",function ()
+    local init_lua = vim.fn.stdpath("config") .. "/init.lua"
+    vim.cmd ("so " .. init_lua)
+end,"source entire config")
 
 -- Scrooling
 map_key('n',"<S-k>","<C-y>")
 map_key('n',"<S-j>","<C-e>")
+
+-- Moving
+if false then
+    map_key('n',"<A-k>","<CMD>move .-2<CR>","Move line up")
+    map_key('n',"<A-j>","<CMD>move .+1<CR>","Move line down")
+    map_key('v',"<A-k>","<CMD>move '<-2<CR>gv=gv","Move selection up")
+    map_key('v',"<A-j>","<CMD>move '>+1<CR>gv=gv","Move selection down")
+    map_key('v',"<A-l>", "dpgvlol", "Move selection right")
+    map_key('v',"<A-h>", "dhpgvlol", "Move selection left")
+end
 
 -- Buffer keymaps
 map_key('n',"<leader>c","<CMD>bd<CR>","Close current buffer")
@@ -108,20 +114,6 @@ map_key('n',"<leader>gr","<CMD>Telescope git_branches theme=ivy<CR>","Show git b
 map_key('n',"<leader>gs","<CMD>Telescope git_status theme=ivy<CR>","Show git status")
 map_key('n',"<leader>n","<CMD>Telescope notify theme=dropdown<CR>","See notify history")
 map_key('n',"<leader>ft","<CMD>TodoTelescope theme=ivy<CR>","Find TODO tags")
--- ToggleTerm
---/-- open default terminals
--- map_key('n',"<leader>th","<CMD>ToggleTerm direction=horizontal<CR>","Toggle horizontal terminal")
--- map_key('n',"<leader>tv","<CMD>ToggleTerm direction=vertical size=60<CR>","Toggle vertical terminal")
--- map_key('n',"<leader>tf","<CMD>ToggleTerm direction=float<CR>","Toggle floating terminal")
---/-- open interpreter terminal
--- map_key('n',"<leader>tn","<CMD>TermExec cmd=\"node\"<CR>","Toggle NodeJS")
--- map_key('n',"<leader>tp","<CMD>TermExec cmd=\"python\"<CR>","Toggle Python")
--- map_key('n',"<leader>tl","<CMD>TermExec cmd=\"lua\"<CR>","Toggle Lua")
--- map_key('n',"<leader>tu","<CMD>TermExec cmd=\"nu\"<CR>","Toggle Nushell")
--- map_key("n","<leader>tz","<CMD>TermExec cmd=\"zsh\"<CR>","Toggle Zsh")
---/-- termianal section
--- map_key('n',"<F7>","<CMD>ToggleTerm<CR>","Toggle last terminal section")
--- map_key('t',"<ESC>","<CMD>ToggleTerm<CR>","Close terminal")
 -- Gitsigns
 map_key('n',"<leader>gp","<CMD>Gitsigns preview_hunk<CR>","Preview hunk")
 map_key('n',"<leader>gb","<CMD>Gitsigns toggle_current_line_blame<CR>","Toggle line blame")

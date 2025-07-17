@@ -9,6 +9,13 @@ local installed_themes = vim.fn.getcompletion("", "color")
 -------------------------------------------------
 --Change-colorscheme-helpers---------------------
 
+-- This function prints all the installed colorschemes
+local function ShowColorSchemes()
+    for _, t in ipairs(installed_themes) do
+        print(t)
+    end
+end
+
 -- This function opens a selection screen for the themes on installed_themes table
 local function SelectColorScheme()
     vim.ui.select(installed_themes, {
@@ -51,4 +58,5 @@ vim.api.nvim_create_user_command("ColorsChange", function(opts)
     ChangeColorScheme(opts.args:match("([^ ]+)[ ]*(.*)"))
 end, { nargs = '?' }) -- nvim command
 vim.api.nvim_create_user_command("ColorsSelect", SelectColorScheme, { nargs = 0 })
+vim.api.nvim_create_user_command("ColorsShow",ShowColorSchemes,{nargs = 0})
 ------------------------------------------------
