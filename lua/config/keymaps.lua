@@ -68,18 +68,23 @@ map_key('n',"<leader>rr",function ()
 end,"source entire config")
 
 -- Scrooling
-map_key('n',"<S-k>","<C-y>")
-map_key('n',"<S-j>","<C-e>")
+map_key('n',"<S-k>","<C-y>zz")
+map_key('n',"<S-j>","<C-e>zz")
 
 -- Moving
 if false then
     map_key('n',"<A-k>","<CMD>move .-2<CR>","Move line up")
     map_key('n',"<A-j>","<CMD>move .+1<CR>","Move line down")
-    map_key('v',"<A-k>","<CMD>move '<-2<CR>gv=gv","Move selection up")
-    map_key('v',"<A-j>","<CMD>move '>+1<CR>gv=gv","Move selection down")
-    map_key('v',"<A-l>", "dpgvlol", "Move selection right")
-    map_key('v',"<A-h>", "dhpgvlol", "Move selection left")
+    map_key({'v','x'},"<A-k>","<CMD>move '<-2<CR>gv=gv","Move selection up")
+    map_key({'v','x'},"<A-j>","<CMD>move '>+1<CR>gv=gv","Move selection down")
+
+    map_key({'v','x'},"<A-l>", "dpgvlol", "Move selection right")
+    map_key({'v','x'},"<A-h>", "dhpgvlol", "Move selection left")
 end
+
+-- Indent
+map_key({'v','x'},">",">gv", "Indent selection")
+map_key({'v','x'},"<","<gv", "Indent selection")
 
 -- Buffer keymaps
 map_key('n',"<leader>c","<CMD>bd<CR>","Close current buffer")
@@ -118,8 +123,6 @@ map_key('n',"<leader>ft","<CMD>TodoTelescope theme=ivy<CR>","Find TODO tags")
 map_key('n',"<leader>gp","<CMD>Gitsigns preview_hunk<CR>","Preview hunk")
 map_key('n',"<leader>gb","<CMD>Gitsigns toggle_current_line_blame<CR>","Toggle line blame")
 map_key('n',"<leader>gl","<CMD>Gitsigns blame_line<CR>","Blame the current line")
--- Markview
-map_key('n',"<leader>mt","<CMD>Markview toggle<CR>","Toggle the preview mode")
 -------------------------------------------------
 -- Config/User keymaps
 -------------------------------------------------
