@@ -1,1 +1,1 @@
-return "accent"
+return "rose-pine"

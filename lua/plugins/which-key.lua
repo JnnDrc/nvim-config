@@ -6,7 +6,7 @@ return {
             preset = "helix"
         })
         require('which-key').add(
-            {   
+            {
                 {"<leader>", group = "Leader"},
                 {"<leader> ", group = "Misc"},
                 {"<leader>s", group = "Namu"},

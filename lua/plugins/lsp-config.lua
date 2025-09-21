@@ -7,6 +7,7 @@ return {
     },
     {
         "williamboman/mason-lspconfig.nvim",
+        event = "VeryLazy",
         config = function()
             require("mason-lspconfig").setup({
                 ensure_installed = { "lua_ls", "clangd", "taplo"}
@@ -15,6 +16,7 @@ return {
     },
     {
         "neovim/nvim-lspconfig",
+        event = "VeryLazy",
         config = function()
             local cmp_capabilities = require("cmp_nvim_lsp").default_capabilities()
             local lspconfig = require("lspconfig")

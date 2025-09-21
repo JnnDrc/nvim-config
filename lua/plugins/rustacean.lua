@@ -1,6 +1,7 @@
 return {
   { --rustaceanvim
     'mrcjkb/rustaceanvim',
+    event = "VeryLazy",
     --version = '^6', -- Recommended
     lazy = false, -- This plugin is already lazy
     ["rust-analyzer"] = {
@@ -22,6 +23,7 @@ return {
   {--crates
     'saecki/crates.nvim',
     tag = 'stable',
+    event = "VeryLazy",
     config = function()
         require('crates').setup()
     end,

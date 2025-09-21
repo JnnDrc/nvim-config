@@ -11,6 +11,7 @@ return {
     },
     {
         "hrsh7th/nvim-cmp",
+        event = "VeryLazy",
         opts = function(_, opts)
             opts.sources = opts.sources or {}
             table.insert(opts.sources, {

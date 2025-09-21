@@ -13,8 +13,8 @@ if false then
 opt.mouse = ""
 end
 
-g.loaded_netrw = nil
-g.loaded_netrwPlugin = nil
+g.loaded_netrw = 1        -- 1 = off, 0 | nil = on
+g.loaded_netrwPlugin = 1  -- 1 = off, 0 | nil = on
 opt.timeoutlen = 500
 -------------------------------------------------
 -- UI
