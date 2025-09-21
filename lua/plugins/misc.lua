@@ -21,6 +21,17 @@ return {
         end
     },
     {
+        --eldoc
+        "sj2tpgk/nvim-eldoc",
+        config = function()
+            require("nvim-eldoc").setup()
+
+            vim.cmd "set updatetime=700"
+            vim.cmd "hi link Eldoc Normal"
+            vim.cmd "hi link EldocCur Identifier"
+        end
+    },
+    {
         -- colorizer
         "NvChad/nvim-colorizer.lua",
         event = "BufReadPre",

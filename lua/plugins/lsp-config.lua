@@ -29,10 +29,10 @@ return {
                 vim.keymap.set('n', "<leader>lf", vim.lsp.buf.format, { desc = "format current buffer" })
                 vim.keymap.set('n', "<leader>li", "<CMD>LspInfo<CR>", { desc = "shows lsp info" })
             end
-            local function exe_path(lsp)
-                local path = vim.fn.exepath(lsp)
+            local function exe_path(exe)
+                local path = vim.fn.exepath(exe)
                 if path == "" then
-                    vim.notify("Can't find " .. lsp .. " executable")
+                    vim.notify("Can't find " .. exe .. " executable")
                     return nil
                 end
                 return path
@@ -107,8 +107,11 @@ return {
             end
             if exe_path("arduino-language-server") ~= nil then
                 local fqbn = "arduino:avr:uno"
+                local cmd = vim.fn.exepath("arduino-language-server") .. ' -fqbn ' .. fqbn
                 lspconfig.arduino_language_server.setup({
-                    cmd = {exe_path("arduino-language-server"),'-fqbn',fqbn},
+                    cmd = {cmd},
+                    -- filetypes = {"ino","cpp","c","h"},
+                    root_dir = lspconfig.util.root_pattern(".git",".ino"),
                     capabilities = cmp_capabilities,
                     on_attach = default_on_attach,
                 })

@@ -68,8 +68,8 @@ map_key('n',"<leader>rr",function ()
 end,"source entire config")
 
 -- Scrooling
-map_key('n',"<S-k>","<C-y>zz")
-map_key('n',"<S-j>","<C-e>zz")
+map_key('n',"<S-k>","<C-y>")
+map_key('n',"<S-j>","<C-e>")
 
 -- Moving
 if false then
@@ -79,7 +79,7 @@ if false then
     map_key({'v','x'},"<A-j>","<CMD>move '>+1<CR>gv=gv","Move selection down")
 
     map_key({'v','x'},"<A-l>", "dpgvlol", "Move selection right")
-    map_key({'v','x'},"<A-h>", "dhpgvlol", "Move selection left")
+    map_key({'v','x'},"<A-h>", "dhPgvhoh", "Move selection left")
 end
 
 -- Indent
