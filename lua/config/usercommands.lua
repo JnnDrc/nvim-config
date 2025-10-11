@@ -3,15 +3,17 @@
 -------------------------------------------------
 
 ---create a user command
----@param name string
----@param func function
----@param oopts? table
-local function create_command(name,func,oopts)
-  vim.api.nvim_create_user_command(name,
-      function(o)
-        func(o.args:match("([^ ]+)[ ]*(.*)"))
-      end,
-      oopts or {})
+---@param name string           // user command name
+---@param func function | nil   // function
+---@param oopts? table          // optional options
+---@param ofunc? function       // option function
+local function create_command(name,func,oopts, ofunc)
+    local f = ofunc or function (ctx)
+        if func then
+            func(ctx.args:match("([^ ]+)[ ]*(.*)"))
+        end
+    end
+    vim.api.nvim_create_user_command(name,f, oopts or {})
 end
 
 -------------------------------------------------
@@ -55,12 +57,13 @@ local function _XXD()
     vim.cmd('redraw')
 
     if vim.v.shell_error ~= 0 then
-        vim.notify('Failed to dump',vim.log.levels.ERROR,{title = "xxd dump"})
+        vim.notify(string.format('Failed to dump, exit code %d',vim.v.shell_error),vim.log.levels.ERROR,{title = "xxd dump"})
     else
         vim.notify('Dump created: ' .. dump,vim.log.levels.INFO,{title = "xxd dump"})
     end
 end
 create_command("Dump",_XXD,{desc = "Hexdump current file"})
+
 local function _XXDR()
     local xxd = vim.fn.exepath("xxd")
     if not xxd then
@@ -75,9 +78,17 @@ local function _XXDR()
     vim.cmd('redraw')
 
     if vim.v.shell_error ~= 0 then
-        vim.notify('Failed to make binary',vim.log.levels.ERROR,{title = "xxd undump"})
+        vim.notify(string.format('Failed to make binary, exit code %d',vim.v.shell_error),vim.log.levels.ERROR,{title = "xxd undump"})
     else
         vim.notify('Undumped: ' .. bin,vim.log.levels.INFO,{title = "xxd undump"})
     end
 end
 create_command("Undump",_XXDR,{desc = "Undump the current file(must be an xxd hexdump)"})
+
+local function _Redir(ctx)
+    local lines = vim.split(vim.api.nvim_exec(ctx.args, true),'\n',{plain = true})
+    vim.cmd 'new'
+    vim.api.nvim_buf_set_lines(0,0,-1,false,lines)
+    vim.opt_local.modified = false
+end
+create_command("Redir",nil, {nargs = '+', complete = 'command'},_Redir)

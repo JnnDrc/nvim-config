@@ -14,7 +14,7 @@ local M = {}
 ---@field size_factor number factor for window size if width and height are not provided (nil), expected between 0.0 and 1.0
 ---@field win_config vim.api.keyset.win_config window config
 
--- Createss a (invalid) window
+-- Creates a (invalid) window
 ---@return winbuf
 function M.window()
     return {win = nil, buf = nil}
@@ -78,7 +78,7 @@ end
 ---@param win winbuf
 ---@param oforce? boolean optional forced close (defaults to false)
 function M.close(win, oforce)
-    if win.win and vim.api.nvim_win_is_valid(win.win) then
+    if M.win_is_valid(win.win) then
         vim.api.nvim_win_close(win.win,oforce or false)
         win.win = nil
         win.buf = nil
@@ -94,7 +94,7 @@ end
 ---@param on_open? function (win,buf)
 ---@param on_close? function (win,buf)
 function M.toggle(win, oopts, on_open,on_close)
-    if win.win and vim.api.nvim_win_is_valid(win.win) then
+    if M.win_is_valid(win.win) then
         if on_close then
             on_close(win.win,win.buf)
         end

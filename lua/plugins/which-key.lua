@@ -8,8 +8,7 @@ return {
         require('which-key').add(
             {
                 {"<leader>", group = "Leader"},
-                {"<leader> ", group = "Misc"},
-                {"<leader>s", group = "Namu"},
+                {"<leader><leader>", group = "Misc"},
                 {"<leader>f", group = "Telescope"},
                 {"<leader>F", group = "Folding"},
                 {"<leader>m", group = "Markview"},
@@ -17,7 +16,8 @@ return {
                 {"<leader>l", group = "LSP"},
                 {"<leader>t", group = "Terminal"},
                 {"<leader>w", group = "Window"},
-                {"<leader>p", group = "Plugins"}
+                {"<leader>p", group = "Plugins"},
+                {"<leader>r", group = "Source config"}
             }
         )
     end,

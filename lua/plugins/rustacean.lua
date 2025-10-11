@@ -3,7 +3,7 @@ return {
     'mrcjkb/rustaceanvim',
     event = "VeryLazy",
     --version = '^6', -- Recommended
-    lazy = false, -- This plugin is already lazy
+    -- lazy = false, -- This plugin is already lazy
     ["rust-analyzer"] = {
       cargo = {
         allfeatures= true,

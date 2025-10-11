@@ -16,6 +16,8 @@ end
 g.loaded_netrw = 1        -- 1 = off, 0 | nil = on
 g.loaded_netrwPlugin = 1  -- 1 = off, 0 | nil = on
 opt.timeoutlen = 500
+
+opt.splitbelow = true
 -------------------------------------------------
 -- UI
 -------------------------------------------------
@@ -31,6 +33,7 @@ opt.signcolumn = "yes"
 opt.colorcolumn = "80"
 opt.showmatch = true
 opt.showmode = false
+opt.winborder = "rounded"
 -------------------------------------------------
 -- Indentation
 -------------------------------------------------

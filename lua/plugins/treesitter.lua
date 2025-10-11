@@ -6,7 +6,7 @@ return {
         config = function()
             local tsconfig = require("nvim-treesitter.configs")
             tsconfig.setup({
-            ensure_installed = {"lua","c","make","toml","markdown"},
+            ensure_installed = {"lua","c","make","markdown"},
             sync_install = false,
             auto_install = true,
             ignore_install = {},
