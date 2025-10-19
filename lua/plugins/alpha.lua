@@ -1,6 +1,5 @@
 return {
     "goolord/alpha-nvim",
-    dependencies = {"echasnovski/mini.icons" },
     config = function ()
       local dashboard = require("alpha.themes.dashboard")
       -- to quickly select saved dashboards

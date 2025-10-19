@@ -1,6 +1,6 @@
--------------------------------------------------
--- Usercommands configuration!
--------------------------------------------------
+-------------------------------------------------------------------------------\
+-- Usercommands configuration!                                                 |
+-------------------------------------------------------------------------------/
 
 ---create a user command
 ---@param name string           // user command name
@@ -37,7 +37,7 @@ end
 create_command("TSParser",_ts,{nargs = 1})
 -- bunny
 local function _bunny()
-    vim.notify("(\\(\\\n( -.-)\no_(\")(\")"  )
+    vim.notify("\n(\\(\\\n( -.-)\no_(\")(\")"  )
 end
 create_command("Bun",_bunny)
 -- print current buffer nbuf

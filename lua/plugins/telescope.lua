@@ -38,7 +38,7 @@ return {
             vim.keymap.set('n',"<leader>fk",builtin.keymaps,{desc = "nvim keymaps"})
             vim.keymap.set('n',"<leader>fh",builtin.help_tags,{ desc = "help tags (docs)"})
             vim.keymap.set('n',"<leader>fd",builtin.diagnostics,{ desc = "find diagnostics"})
-            vim.keymap.set('n',"<leader>fs",builtin.spell_suggest,{ desc = "find diagnostics"})
+            vim.keymap.set('n',"<leader>fs",builtin.spell_suggest,{ desc = "spell suggestions"})
         end
     },
     {

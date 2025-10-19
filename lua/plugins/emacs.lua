@@ -9,7 +9,7 @@ return {
         config = function ()
         ---@type CompileModeOpts
         vim.g.compile_mode = {
-            -- baleia_setup = true,
+            baleia_setup = true,
             -- bang_expansion = true,
         }
         end
