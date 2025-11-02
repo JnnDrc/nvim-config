@@ -9,10 +9,10 @@ return {
     --     "morhetz/gruvbox",
     --     priority = 1000,
     -- },
-    {
-        "rose-pine/neovim",
-        priority = 1000,
-    },
+    -- {
+    --     "rose-pine/neovim",
+    --     priority = 1000,
+    -- },
     {
         "vague2k/vague.nvim",
         priority = 1000,
