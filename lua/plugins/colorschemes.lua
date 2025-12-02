@@ -18,15 +18,6 @@ return {
         priority = 1000,
     },
     {
-        "lucasadelino/conifer.nvim",
-        priority = 1000,
-    },
-    -- darkies
-    {
-        "blazkowolf/gruber-darker.nvim",
-        priority = 1000,
-    },
-    {
         "Alligator/accent.vim",
         priority = 1000,
         config = function()

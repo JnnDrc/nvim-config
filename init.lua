@@ -2,10 +2,16 @@
 -- Init file!                                                                  |
 -------------------------------------------------------------------------------/
 local start_time = vim.uv.hrtime()  -- measure startup time
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 ----------------------------------------
 -- Init core
 ----------------------------------------
-require("config.lazy")          -- Lazy.nvim set-up
+require("core.lazy")            -- Lazy.nvim set-up
+require("core.lsp")             -- LSP clients setup
+----------------------------------------
+-- Init config
+----------------------------------------
 require("config.options")       -- vim options
 require("config.colorscheme")   -- colorscheme config
 require("config.keymaps")       -- re-mapings
@@ -13,7 +19,6 @@ require("config.usercommands")  -- user defined commands
 ----------------------------------------
 -- Init plugins
 ----------------------------------------
-require("config.plugins.netrw")         -- netrw options
 require("plugin.flowin")                -- little plugin for make floating windows(my first try to make a plugin)
 require("plugin.fterm")                 -- terminal using flowin
 ----------------------------------------

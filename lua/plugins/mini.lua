@@ -11,9 +11,9 @@ return{
         require("mini.files").setup()
         require("mini.notify").setup()
 
+        require("mini.icons").setup()
         require("mini.statusline").setup()
         require("mini.tabline").setup()
-        require("mini.icons").setup()
         require("mini.cursorword").setup()
         local hlp = require("mini.hipatterns")
         hlp.setup({
@@ -28,8 +28,8 @@ return{
           },
         })
 
-        local miniclue = require('mini.clue')
-        miniclue.setup({
+        local clue = require('mini.clue')
+        clue.setup({
             window = {
                 delay = 0,
             },
@@ -66,12 +66,12 @@ return{
             },
             clues = {
                 -- Enhance this by adding descriptions for <Leader> mapping groups
-                miniclue.gen_clues.builtin_completion(),
-                miniclue.gen_clues.g(),
-                miniclue.gen_clues.marks(),
-                miniclue.gen_clues.registers({ show_contents = true}),
-                miniclue.gen_clues.windows(),
-                miniclue.gen_clues.z(),
+                clue.gen_clues.builtin_completion(),
+                clue.gen_clues.g(),
+                clue.gen_clues.marks(),
+                clue.gen_clues.registers({ show_contents = true}),
+                clue.gen_clues.windows(),
+                clue.gen_clues.z(),
                 {mode = 'n', keys = "<leader>", desc = "Leader"},
                 {mode = 'n', keys = "<leader><leader>", desc = "Misc"},
                 {mode = 'n', keys = "<leader>f", desc = "Find"},

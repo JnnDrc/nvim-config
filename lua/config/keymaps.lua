@@ -107,8 +107,6 @@ map_key('n',"<leader>a","<CMD>Alpha<CR>","Dashboard/Alpha")
 -- Lazy & Mason
 map_key('n',"<leader>pl","<CMD>Lazy<CR>","Open Lazy dashboard")
 map_key('n',"<leader>pm","<CMD>Mason<CR>","Open Mason dashboard")
--- Neotree
-map_key('n',"<leader>E","<CMD>Neotree toggle<CR>","Toggle Neotree")
 -- Telescope
 map_key('n',"<leader>gc","<CMD>Telescope git_commits theme=ivy<CR>","Show git commits")
 map_key('n',"<leader>gr","<CMD>Telescope git_branches theme=ivy<CR>","Show git branches")

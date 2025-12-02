@@ -2,8 +2,6 @@
 --  lazy boot
 -------------------------------------------------
 
-require("config.leader-key")-- for correctly set-up all plugins
-
 --Bootstrap-lazy.nvim----------------------------
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then

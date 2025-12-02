@@ -1,4 +1,4 @@
-# JayNVim
+# JayyNVim
 
 It's just my nvim configuration
 
@@ -8,13 +8,14 @@ o_(")(")   Sleepin'
 
 ## Structure
 
-lua             lua files directory  
+lua\\           lua files directory  
 |-config            nvim configuration  
-| |-plugins             plugins configuration  
+|-core              core configuration (package manager and lsp)
+|-plugin            custom/own plugins
 |-plugins           plugins downloads and startup settings  
+lsp\\           lsps options
 init.lua        init.lua  
 README.md       me :)  
-lazy-lock.json  that thing from lazy  
 
 ## OBS
 - Needs to set envirioment variable 'NVIM\_CONFIG' to use config button of dashboard(im too lazzy to use stdpath)

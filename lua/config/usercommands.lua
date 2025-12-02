@@ -6,7 +6,7 @@
 ---@param name string           // user command name
 ---@param func function | nil   // function
 ---@param oopts? table          // optional options
----@param ofunc? function       // option function
+---@param ofunc? function       // optional function
 local function create_command(name,func,oopts, ofunc)
     local f = ofunc or function (ctx)
         if func then
