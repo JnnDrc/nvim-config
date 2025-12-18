@@ -14,6 +14,10 @@ return {
     --     priority = 1000,
     -- },
     {
+        'alexpasmantier/hubbamax.nvim',
+        priority = 1000,
+    },
+    {
         "vague2k/vague.nvim",
         priority = 1000,
     },

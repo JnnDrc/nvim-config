@@ -11,7 +11,7 @@
 ---@param _cmd string | function
 ---@param _desc? string
 ---@param _oopts? table
-local function map_key(_mode,_key,_cmd,_desc,_oopts)
+function keymap(_mode,_key,_cmd,_desc,_oopts)
     _desc = _desc or ""
   local opts = {desc = _desc,noremap = true,silent = true}
   if _oopts then
@@ -26,114 +26,115 @@ end
 
 -- Disable arrow keys
 if true then
-  map_key('',"<up>","<nop>")
-  map_key('',"<down>","<nop>")
-  map_key('',"<left>","<nop>")
-  map_key('',"<right>","<nop>")
+    keymap('',"<up>","<nop>")
+    keymap('',"<down>","<nop>")
+    keymap('',"<left>","<nop>")
+    keymap('',"<right>","<nop>")
 end
 
 -- Window shortcuts
-map_key('n',"<leader>wH","<CMD>new<CR>","Create a new window in horizontal")
-map_key('n',"<leader>wh","<CMD>split<CR>","Split the current window horizontaly")
-map_key('n',"<leader>wV","<CMD>vnew<CR>","Create a new window in vertical")
-map_key('n',"<leader>wv","<CMD>vsplit<CR>","Split the current window verticaly")
-map_key('n',"<leader>wc","<CMD>close<CR>","Close the current window")
+keymap('n',"<leader>wH","<CMD>new<CR>","Create a new window in horizontal")
+keymap('n',"<leader>wh","<CMD>split<CR>","Split the current window horizontaly")
+keymap('n',"<leader>wV","<CMD>vnew<CR>","Create a new window in vertical")
+keymap('n',"<leader>wv","<CMD>vsplit<CR>","Split the current window verticaly")
+keymap('n',"<leader>wc","<CMD>close<CR>","Close the current window")
 
-map_key('n',"<leader>www","<CMD>wall<CR>","Write all files with changes")
-map_key('n',"<leader>wqq","<CMD>qall<CR>","Close all windows and quit nvim")
-map_key('n',"<leader>wwq","<CMD>wqall<CR>","Write all files and quit nvim")
-map_key('n',"<leader>wq!","<CMD>qall!<CR>","Throw all changes and quit nvim")
+keymap('n',"<leader>www","<CMD>wall<CR>","Write all files with changes")
+keymap('n',"<leader>wqq","<CMD>qall<CR>","Close all windows and quit nvim")
+keymap('n',"<leader>wwq","<CMD>wqall<CR>","Write all files and quit nvim")
+keymap('n',"<leader>wq!","<CMD>qall!<CR>","Throw all changes and quit nvim")
 
-map_key('n',"<leader>ws","<C-w>x","Swap the current with the next")
+keymap('n',"<leader>ws","<C-w>x","Swap the current with the next")
 
-map_key({'n','t'},"<C-H>","<C-W>h")
-map_key({'n','t'},"<C-L>","<C-W>l")
-map_key({'n','t'},"<C-J>","<C-W>j")
-map_key({'n','t'},"<C-K>","<C-W>k")
+keymap({'n','t'},"<C-H>","<C-W>h")
+keymap({'n','t'},"<C-L>","<C-W>l")
+keymap({'n','t'},"<C-J>","<C-W>j")
+keymap({'n','t'},"<C-K>","<C-W>k")
 
-map_key({'n','t'},"<C-up>","<CMD>resize +1<CR>")
-map_key({'n','t'},"<C-down>","<CMD>resize -1<CR>")
-map_key({'n','t'},"<C-right>","<CMD>vertical resize +1<CR>")
-map_key({'n','t'},"<C-left>","<CMD>vertical resize -1<CR>")
+keymap({'n','t'},"<C-up>","<CMD>resize +1<CR>")
+keymap({'n','t'},"<C-down>","<CMD>resize -1<CR>")
+keymap({'n','t'},"<C-right>","<CMD>vertical resize +1<CR>")
+keymap({'n','t'},"<C-left>","<CMD>vertical resize -1<CR>")
 
-map_key('t',"<ESC><ESC>","<C-\\><C-n>","Escape terminal")
+keymap('t',"<ESC><ESC>","<C-\\><C-n>","Escape terminal")
 
 -- Config reload
-map_key('n',"<leader>rf","<CMD>so %<CR>","source current file")
-map_key('n',"<leader>rr",function ()
+keymap('n',"<leader>rf","<CMD>so %<CR>","source current file")
+keymap('n',"<leader>rr",function ()
     local init_lua = vim.fn.stdpath("config") .. "/init.lua"
     vim.cmd ("so " .. init_lua)
 end,"source entire config")
 
 -- Scrooling
-map_key('n',"<S-k>","<C-y>")
-map_key('n',"<S-j>","<C-e>")
+keymap('n',"<S-k>","<C-y>")
+keymap('n',"<S-j>","<C-e>")
 
 -- Moving
 if false then
-    map_key('n',"<A-k>","<CMD>move .-2<CR>","Move line up")
-    map_key('n',"<A-j>","<CMD>move .+1<CR>","Move line down")
-    map_key({'v','x'},"<A-k>","<CMD>move '<-2<CR>gv=gv","Move selection up")
-    map_key({'v','x'},"<A-j>","<CMD>move '>+1<CR>gv=gv","Move selection down")
+    keymap('n',"<A-k>","<CMD>move .-2<CR>","Move line up")
+    keymap('n',"<A-j>","<CMD>move .+1<CR>","Move line down")
+    keymap({'v','x'},"<A-k>","<CMD>move '<-2<CR>gv=gv","Move selection up")
+    keymap({'v','x'},"<A-j>","<CMD>move '>+1<CR>gv=gv","Move selection down")
 
-    map_key({'v','x'},"<A-l>", "dpgvlol", "Move selection right")
-    map_key({'v','x'},"<A-h>", "dhPgvhoh", "Move selection left")
+    keymap({'v','x'},"<A-l>", "dpgvlol", "Move selection right")
+    keymap({'v','x'},"<A-h>", "dhPgvhoh", "Move selection left")
 end
 
 -- Indent
-map_key({'v','x'},">",">gv", "Indent selection")
-map_key({'v','x'},"<","<gv", "Indent selection")
+keymap({'v','x'},">",">gv", "Indent selection")
+keymap({'v','x'},"<","<gv", "Indent selection")
 
 -- Buffer keymaps
-map_key('n',"<leader>c","<CMD>bd<CR>","Close current buffer")
-map_key('n',"<leader>x","<CMD>bd!<CR>","Throw out current buffer")
-map_key('n',"<S-l>","<CMD>bnext<CR>","Go to the next buffer")
-map_key('n',"<S-h>","<CMD>bprevious<CR>","Go to the previous buffer")
+keymap('n',"<leader>c","<CMD>bd<CR>","Close current buffer")
+keymap('n',"<leader>x","<CMD>bd!<CR>","Throw out current buffer")
+keymap('n',"<S-l>","<CMD>bnext<CR>","Go to the next buffer")
+keymap('n',"<S-h>","<CMD>bprevious<CR>","Go to the previous buffer")
 
 -- Folding
-map_key('n',"<leader>Fo","zo","Open a fold under the cursor")
-map_key('n',"<leader>Fc","zc","Close a fold under the cursor")
-map_key('n',"<leader>Fa","za","Toggle a fold under the cursor")
-map_key('n',"<leader>FA","zR","Toggle all folds in the buffer")
-map_key('n',"<leader>Ff","zf%","Create a fold under the cursor")
-map_key('n',"<leader>Fd","zd","Delete a fold under the cursor")
-map_key('n',"<leader>FD","zD","Delete all folds under the cursor")
+keymap('n',"<leader>Fo","zo","Open a fold under the cursor")
+keymap('n',"<leader>Fc","zc","Close a fold under the cursor")
+keymap('n',"<leader>Fa","za","Toggle a fold under the cursor")
+keymap('n',"<leader>FA","zR","Toggle all folds in the buffer")
+keymap('n',"<leader>Ff","zf%","Create a fold under the cursor")
+keymap('n',"<leader>Fd","zd","Delete a fold under the cursor")
+keymap('n',"<leader>FD","zD","Delete all folds under the cursor")
 
 -------------------------------------------------
 -- Plugins keymaps
 -------------------------------------------------
 -- Alpha
-map_key('n',"<leader>a","<CMD>Alpha<CR>","Dashboard/Alpha")
+keymap('n',"<leader>a","<CMD>Alpha<CR>","Dashboard/Alpha")
 -- Lazy & Mason
-map_key('n',"<leader>pl","<CMD>Lazy<CR>","Open Lazy dashboard")
-map_key('n',"<leader>pm","<CMD>Mason<CR>","Open Mason dashboard")
+keymap('n',"<leader>pl","<CMD>Lazy<CR>","Open Lazy dashboard")
+keymap('n',"<leader>pm","<CMD>Mason<CR>","Open Mason dashboard")
 -- Telescope
-map_key('n',"<leader>gc","<CMD>Telescope git_commits theme=ivy<CR>","Show git commits")
-map_key('n',"<leader>gr","<CMD>Telescope git_branches theme=ivy<CR>","Show git branches")
-map_key('n',"<leader>gs","<CMD>Telescope git_status theme=ivy<CR>","Show git status")
-map_key('n',"<leader>n","<CMD>Telescope notify theme=dropdown<CR>","See notify history")
+keymap('n',"<leader>gc","<CMD>Telescope git_commits theme=ivy<CR>","Show git commits")
+keymap('n',"<leader>gr","<CMD>Telescope git_branches theme=ivy<CR>","Show git branches")
+keymap('n',"<leader>gs","<CMD>Telescope git_status theme=ivy<CR>","Show git status")
+keymap('n',"<leader>n","<CMD>Telescope notify theme=dropdown<CR>","See notify history")
 -- Gitsigns
-map_key('n',"<leader>gp","<CMD>Gitsigns preview_hunk<CR>","Preview hunk")
-map_key('n',"<leader>gb","<CMD>Gitsigns toggle_current_line_blame<CR>","Toggle line blame")
-map_key('n',"<leader>gl","<CMD>Gitsigns blame_line<CR>","Blame the current line")
+keymap('n',"<leader>gp","<CMD>Gitsigns preview_hunk<CR>","Preview hunk")
+keymap('n',"<leader>gb","<CMD>Gitsigns toggle_current_line_blame<CR>","Toggle line blame")
+keymap('n',"<leader>gl","<CMD>Gitsigns blame_line<CR>","Blame the current line")
 -- Compile-mode
-map_key('n',"<leader>b","<CMD>Compile<CR>","Enter compile mode")
-map_key('n',"<C-b>","<CMD>Compile<CR>","Enter compile mode")
-map_key('n',"<C-n>","<CMD>NextError<CR>","Enter compile mode")
-map_key('n',"<C-p>","<CMD>PrevError<CR>","Enter compile mode")
+keymap('n',"<C-b>","<CMD>Compile<CR>","Enter compile mode")
+keymap('n',"<C-n>","<CMD>NextError<CR>","Next error")
+keymap('n',"<C-p>","<CMD>PrevError<CR>","Previous error")
 -- Mini.nvim
-map_key('n','<Leader>e',MiniFiles.open,"open mini files")
+keymap('n','<Leader>e',MiniFiles.open,"open mini files")
 -------------------------------------------------
 -- Config/User keymaps
 -------------------------------------------------
+keymap('n',"<leader>th","<CMD>split | terminal<CR> <CMD>resize -10<CR>a","open horizontal split terminal")
+keymap('n',"<leader>tv","<CMD>vsplit | terminal<CR> <CMD>resize -10<CR>a","open vertical split terminal")
 --- kj
-map_key('i',"kj","<ESC>","quick exit insert mode")
+keymap('i',"kj","<ESC>","quick exit insert mode")
 -- Themes
-map_key('n',"<leader>C","<CMD>ColorsSelect<CR>","Change Colorscheme(UI)")
+keymap('n',"<leader>C","<CMD>ColorsSelect<CR>","Change Colorscheme(UI)")
 -- Obscure commands (double leader)
-map_key('n',"<leader><leader>s","<CMD>Rshl<CR>","Reset the search highlight")
-map_key('v',"<leader><leader>p","<ESC>a)<ESC>gvo<ESC>i(<ESC>", "enclosure selection in parenthesis")
-map_key('v',"<leader><leader>b","<ESC>a]<ESC>gvo<ESC>i[<ESC>", "enclosure selection in brackets")
-map_key('v',"<leader><leader>B","<ESC>a}<ESC>gvo<ESC>i{<ESC>", "enclosure selection in curly brackets")
-map_key('v',"<leader><leader>q","<ESC>a\"<ESC>gvo<ESC>i\"<ESC>", "enclosure selection in double quotes")
-map_key('v',"<leader><leader>Q","<ESC>a\'<ESC>gvo<ESC>i\'<ESC>", "enclosure selection in single quotes")
+keymap('n',"<leader><leader>s","<CMD>Rshl<CR>","Reset the search highlight")
+keymap('v',"<leader><leader>p","<ESC>a)<ESC>gvo<ESC>i(<ESC>", "enclosure selection in parenthesis")
+keymap('v',"<leader><leader>b","<ESC>a]<ESC>gvo<ESC>i[<ESC>", "enclosure selection in brackets")
+keymap('v',"<leader><leader>B","<ESC>a}<ESC>gvo<ESC>i{<ESC>", "enclosure selection in curly brackets")
+keymap('v',"<leader><leader>q","<ESC>a\"<ESC>gvo<ESC>i\"<ESC>", "enclosure selection in double quotes")
+keymap('v',"<leader><leader>Q","<ESC>a\'<ESC>gvo<ESC>i\'<ESC>", "enclosure selection in single quotes")

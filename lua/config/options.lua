@@ -11,19 +11,25 @@ opt.clipboard:append("unnamedplus")
 
 -- disable mouse
 if false then
-opt.mouse = ""
+    opt.mouse = ""
 end
 
 opt.timeoutlen = 500
 
 opt.splitbelow = true
+
+opt.undofile = true
 -------------------------------------------------
 -- UI
 -------------------------------------------------
 opt.number = true
 opt.relativenumber = true
 opt.cursorline = true
+opt.cursorcolumn = false
+
 opt.wrap = false
+opt.linebreak = false
+
 opt.scrolloff = 10
 opt.sidescrolloff = 10
 
@@ -33,6 +39,9 @@ opt.colorcolumn = "80"
 opt.showmatch = true
 opt.showmode = false
 opt.winborder = "rounded"
+
+opt.list = true
+opt.listchars = 'tab:» ,trail:·,space:·,nbsp:␣'
 -------------------------------------------------
 -- Indentation
 -------------------------------------------------

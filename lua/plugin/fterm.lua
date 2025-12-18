@@ -20,4 +20,4 @@ function(ctx)
 end,
 {nargs = '?'}
 )
-vim.keymap.set("n","<leader>t","<CMD>FTerm<CR>a",{desc = "Toggle fterm(mah plagin)"})
+vim.keymap.set("n","<leader>tt","<CMD>FTerm<CR>a",{desc = "Toggle fterm(mah plagin)"})
