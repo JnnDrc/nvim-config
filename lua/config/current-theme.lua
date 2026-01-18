@@ -1,1 +1,1 @@
-return "vague"
+return "myni"

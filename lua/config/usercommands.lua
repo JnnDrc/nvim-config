@@ -16,32 +16,23 @@ local function create_command(name,func,oopts, ofunc)
     vim.api.nvim_create_user_command(name,f, oopts or {})
 end
 
--------------------------------------------------
--- Functions
--------------------------------------------------
+----------------------------------------
+-- Functions ---------------------------
+----------------------------------------
 
--- force quit
-create_command("Q",function () vim.cmd("q!") end)
--- re-set search highlight
-create_command("Rshl",function () vim.cmd("let @/ = \"\"") end)
 -- clear register
 local function _clear_reg(reg)
     vim.cmd("let @" .. reg .. " = ''")
     vim.notify("Cleared register ".. reg,vim.log.levels.INFO,{title = "Clear register"})
 end
-create_command("ClearRegister",_clear_reg,{nargs = 1})
 -- set treesitter
 local function _ts(parser)
     require('nvim-treesitter.highlight').attach(0, parser)
 end
-create_command("TSParser",_ts,{nargs = 1})
 -- bunny
 local function _bunny()
     vim.notify("\n(\\(\\\n( -.-)\no_(\")(\")"  )
 end
-create_command("Bun",_bunny)
--- print current buffer nbuf
-create_command("Buf",function () print("nbuf: "..tostring(vim.api.nvim_get_current_buf())) end)
 
 local function _XXD()
     local xxd = vim.fn.exepath("xxd")
@@ -62,7 +53,6 @@ local function _XXD()
         vim.notify('Dump created: ' .. dump,vim.log.levels.INFO,{title = "xxd dump"})
     end
 end
-create_command("Dump",_XXD,{desc = "Hexdump current file"})
 
 local function _XXDR()
     local xxd = vim.fn.exepath("xxd")
@@ -83,7 +73,6 @@ local function _XXDR()
         vim.notify('Undumped: ' .. bin,vim.log.levels.INFO,{title = "xxd undump"})
     end
 end
-create_command("Undump",_XXDR,{desc = "Undump the current file(must be an xxd hexdump)"})
 
 local function _Redir(ctx)
     local lines = vim.split(vim.api.nvim_exec(ctx.args, true),'\n',{plain = true})
@@ -91,4 +80,33 @@ local function _Redir(ctx)
     vim.api.nvim_buf_set_lines(0,0,-1,false,lines)
     vim.opt_local.modified = false
 end
+
+local function _Makeprg(...)
+    local prg = {...}
+    for i = 2, #prg,2 do table.insert(prg,i," ") end
+    vim.opt.makeprg = table.concat(prg)
+end
+----------------------------------------
+-- Commands ----------------------------
+----------------------------------------
+
+-- force quit
+create_command("Q",function () vim.cmd("q!") end)
+-- re-set search highlight
+create_command("Rshl",function () vim.cmd("let @/ = \"\"") end)
+-- clear register
+create_command("ClearRegister",_clear_reg,{nargs = 1})
+-- set tree-sitter parser for current file
+create_command("TSParser",_ts,{nargs = 1})
+-- bunny
+create_command("Bun",_bunny)
+-- print current buf nbuf
+create_command("Buf",function () print("nbuf: "..tostring(vim.api.nvim_get_current_buf())) end)
+-- dump current file
+create_command("Dump",_XXD,{desc = "Hexdump current file"})
+-- undump current file
+create_command("Undump",_XXDR,{desc = "Undump the current file(must be an xxd hexdump)"})
+-- redirect output to new buffer
 create_command("Redir",nil, {nargs = '+', complete = 'command'},_Redir)
+-- set makeprg
+create_command("Makeprg",_Makeprg, {nargs = '+'})

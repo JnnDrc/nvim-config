@@ -75,14 +75,15 @@ opt.foldlevel = 99
 -- Netrw
 -------------------------------------------------
 -- netrw options
-g.loaded_netrw = 1        -- 1 = off, 0 | nil = on
-g.loaded_netrwPlugin = 1  -- 1 = off, 0 | nil = on
+local netrw = nil
+g.loaded_netrw = netrw        -- 1 = off, 0 | nil = on
+g.loaded_netrwPlugin = netrw  -- 1 = off, 0 | nil = on
 if (not g.loaded_netrw) and (not g.loaded_netrwPlugin) then
     g.netrw_banner = 1                              -- Netrw banner on top                                                        
     g.netrw_altv = 1                                -- Create the split of the Netrw window to the left                           
-    g.netrw_browse_split = 4                        -- Open files in previous window. This emulates the typical "drawer" behavior 
+    -- g.netrw_browse_split = 4                        -- Open files in previous window. This emulates the typical "drawer" behavior 
     g.netrw_liststyle = 4                           -- Set the styling of the file list to be one column with files inside
-    g.netrw_winsize = 14                            -- Set the width of the "drawer"
+    -- g.netrw_winsize = 14                            -- Set the width of the "drawer"
     g.netrw_list_hide = '^\\./\\?$'                 -- hide ./
     -- g.netrw_list_hide = '^\\./\\?$,^\\.\\./\\?$'    -- hide ./ and ../
 end

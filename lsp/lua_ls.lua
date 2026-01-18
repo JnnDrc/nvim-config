@@ -1,4 +1,3 @@
-
 local lua_libs = {}
 local lua_ls_addons = { "/love2d", "/lua-ls-cc-tweaked", "/luafilesystem" }
 local lua_ls_addons_dir = vim.env.LUALS_ADDONS

@@ -86,5 +86,58 @@ return{
 
             },
         })
+
+        local headers = {
+          {
+              "|\\  | |--- /---\\ \\    / | |\\  /|",
+              "| \\ | |--- |   |  \\  /  | | \\/ |",
+              "|  \\| |___ \\---/   \\/   | |    |",
+          },
+          {
+              " _   _         __     ___",
+              "| \\ | | ___  __\\ \\   / (_)_ __ ___",
+              "|  \\| |/ _ \\/ _ \\ \\ / /| | '_ ` _ \\",
+              "| |\\  |  __/ (_) \\ V / | | | | | | |",
+              "|_| \\_|\\___|\\___/ \\_/  |_|_| |_| |_|",
+          },
+          {
+            "neoneo     neo neoneoneoneo    neoneo    vim          vim vim vim",
+            "neo neo    neo neo           neo    neo   vim        vim      vimvimvimvimvim",
+            "neo  neo   neo neoneoneoneo neo      neo   vim      vim   vim vim   vim    vim",
+            "neo   neo  neo neoneoneoneo neo      neo    vim    vim    vim vim   vim    vim",
+            "neo    neo neo neo           neo    neo      vim  vim     vim vim   vim    vim",
+            "neo     neoneo neoneoneoneo    neoneo         vimvim      vim vim   vim    vim",
+          }
+        }
+        local header = headers[2]
+        local nvv = string.format("%s.%s.%s",vim.version().major,vim.version().minor,vim.version().patch)
+        table.insert(header,string.rep("-",#header[#header]-#nvv)..nvv)
+        local footer = {
+                "Life isn't a question",
+                "\tit doesn't need an answer...",
+                " -Some korvax cartographer",
+        }
+
+        local starter = require("mini.starter")
+        starter.setup({
+            autoopen = true,
+            evaluate_single = true,
+            items = {
+                {name = "new", action = "ene ", section = "nvim"},
+                {name = "config", action = "cd $NVIM_CONFIG | e init.lua", section = "nvim"},
+                {name = "quit", action = "wqa", section = "nvim"},
+                starter.sections.recent_files(5,true,false),
+                -- starter.sections.recent_files(5,false,false),
+                -- starter.sections.sessions(5,true), no sessions
+            },
+            header = table.concat(header,'\n'),
+            footer = table.concat(footer,'\n'),
+            content_hooks = {
+                starter.gen_hook.adding_bullet("~ "),
+                starter.gen_hook.aligning("center", "center"),
+            },
+            query_updaters = "abcdefghijklmnopqrstuvwxyz0123456789_-.",
+            silent = true,
+        })
     end
 }

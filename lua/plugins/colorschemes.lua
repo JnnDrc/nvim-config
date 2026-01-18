@@ -1,20 +1,19 @@
 return {
     -- set the colorscheme in init.lua
-    -- colorfulls
     -- {
     --     "catppuccin/nvim",
     --     priority = 1000,
     -- },
-    -- {
-    --     "morhetz/gruvbox",
-    --     priority = 1000,
-    -- },
-    -- {
-    --     "rose-pine/neovim",
-    --     priority = 1000,
-    -- },
     {
-        'alexpasmantier/hubbamax.nvim',
+        "rose-pine/neovim",
+        priority = 1000,
+    },
+    {
+        "folke/tokyonight.nvim",
+        priority = 1000,
+    },
+    {
+        "Shatur/neovim-ayu",
         priority = 1000,
     },
     {

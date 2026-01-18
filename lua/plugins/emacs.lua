@@ -7,7 +7,6 @@ return {
             "nvim-lua/plenary.nvim"
         },
         config = function ()
-        ---@type CompileModeOpts
         vim.g.compile_mode = {
             baleia_setup = true,
             -- bang_expansion = true,

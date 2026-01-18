@@ -20,4 +20,8 @@ function(ctx)
 end,
 {nargs = '?'}
 )
+vim.api.nvim_create_user_command("FKill",
+function (ctx)
+    fw.close(_fterm,true)
+end, {nargs = 0})
 vim.keymap.set("n","<leader>tt","<CMD>FTerm<CR>a",{desc = "Toggle fterm(mah plagin)"})

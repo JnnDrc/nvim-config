@@ -21,6 +21,7 @@ require("config.usercommands")  -- user defined commands
 ----------------------------------------
 require("plugin.flowin")                -- little plugin for make floating windows(my first try to make a plugin)
 require("plugin.fterm")                 -- terminal using flowin
+require("plugin.scratch")               -- lua scratch buffer
 ----------------------------------------
 -- Other options
 ----------------------------------------

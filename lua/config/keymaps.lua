@@ -24,14 +24,6 @@ end
 -- Neovim keympas
 ----------------------------------------
 
--- Disable arrow keys
-if true then
-    keymap('',"<up>","<nop>")
-    keymap('',"<down>","<nop>")
-    keymap('',"<left>","<nop>")
-    keymap('',"<right>","<nop>")
-end
-
 -- Window shortcuts
 keymap('n',"<leader>wH","<CMD>new<CR>","Create a new window in horizontal")
 keymap('n',"<leader>wh","<CMD>split<CR>","Split the current window horizontaly")
@@ -102,8 +94,6 @@ keymap('n',"<leader>FD","zD","Delete all folds under the cursor")
 -------------------------------------------------
 -- Plugins keymaps
 -------------------------------------------------
--- Alpha
-keymap('n',"<leader>a","<CMD>Alpha<CR>","Dashboard/Alpha")
 -- Lazy & Mason
 keymap('n',"<leader>pl","<CMD>Lazy<CR>","Open Lazy dashboard")
 keymap('n',"<leader>pm","<CMD>Mason<CR>","Open Mason dashboard")
@@ -121,7 +111,11 @@ keymap('n',"<C-b>","<CMD>Compile<CR>","Enter compile mode")
 keymap('n',"<C-n>","<CMD>NextError<CR>","Next error")
 keymap('n',"<C-p>","<CMD>PrevError<CR>","Previous error")
 -- Mini.nvim
-keymap('n','<Leader>e',MiniFiles.open,"open mini files")
+keymap('n','<leader>e',MiniFiles.open,"open mini files")
+keymap('n','<leader>D',MiniStarter.open,"open dashboard")
+-- Markview
+keymap('n',"<leader>mo","<CMD>Markview open<CR>", "open path under cursor")
+keymap('n',"<leader>mt","<CMD>Markview toggle<CR>", "toggle markview")
 -------------------------------------------------
 -- Config/User keymaps
 -------------------------------------------------
@@ -129,8 +123,6 @@ keymap('n',"<leader>th","<CMD>split | terminal<CR> <CMD>resize -10<CR>a","open h
 keymap('n',"<leader>tv","<CMD>vsplit | terminal<CR> <CMD>resize -10<CR>a","open vertical split terminal")
 --- kj
 keymap('i',"kj","<ESC>","quick exit insert mode")
--- Themes
-keymap('n',"<leader>C","<CMD>ColorsSelect<CR>","Change Colorscheme(UI)")
 -- Obscure commands (double leader)
 keymap('n',"<leader><leader>s","<CMD>Rshl<CR>","Reset the search highlight")
 keymap('v',"<leader><leader>p","<ESC>a)<ESC>gvo<ESC>i(<ESC>", "enclosure selection in parenthesis")

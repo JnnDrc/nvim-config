@@ -52,7 +52,7 @@ return {
             require("luasnip.loaders.from_vscode").lazy_load()
             cmp.setup({
                 completion = {
-                    --autocomplete = false --uncomment to make autocompletes optional/toggleable
+                    -- autocomplete = false, --uncomment to make autocompletes optional/toggleable
                     completeopt = 'menu,menuone,noselect'
                 },
                 snippet = {
@@ -88,7 +88,6 @@ return {
                         else
                             vim_item.menu = '[' .. entry.source.name .. ']'
                         end
-
                         return vim_item
                     end
                 },

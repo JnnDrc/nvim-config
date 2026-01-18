@@ -9,10 +9,10 @@ local M = {}
 ---@field buf integer | nil buffer id
 
 ---@class wopts
----@field width number window width
----@field height number window height
----@field size_factor number factor for window size if width and height are not provided (nil), expected between 0.0 and 1.0
----@field win_config vim.api.keyset.win_config window config
+---@field width number | nil window width
+---@field height number | nil window height
+---@field size_factor number | nil factor for window size if width and height are not provided (nil), expected between 0.0 and 1.0
+---@field win_config vim.api.keyset.win_config | nil window config
 
 -- Creates a (invalid) window
 ---@return winbuf
