@@ -95,8 +95,8 @@ keymap('n',"<leader>FD","zD","Delete all folds under the cursor")
 -- Plugins keymaps
 -------------------------------------------------
 -- Lazy & Mason
-keymap('n',"<leader>pl","<CMD>Lazy<CR>","Open Lazy dashboard")
-keymap('n',"<leader>pm","<CMD>Mason<CR>","Open Mason dashboard")
+keymap('n',"<leader>Pl","<CMD>Lazy<CR>","Open Lazy dashboard")
+keymap('n',"<leader>Pm","<CMD>Mason<CR>","Open Mason dashboard")
 -- Telescope
 keymap('n',"<leader>gc","<CMD>Telescope git_commits theme=ivy<CR>","Show git commits")
 keymap('n',"<leader>gr","<CMD>Telescope git_branches theme=ivy<CR>","Show git branches")
@@ -113,6 +113,11 @@ keymap('n',"<C-p>","<CMD>PrevError<CR>","Previous error")
 -- Mini.nvim
 keymap('n','<leader>e',MiniFiles.open,"open mini files")
 keymap('n','<leader>D',MiniStarter.open,"open dashboard")
+
+keymap('n','<leader>pf',":Pick files<CR>","pick files")
+keymap('n','<leader>pb',":Pick buffers<CR>","pick buffers")
+keymap('n','<leader>pg',":Pick grep_live<CR>", "grep cwd")
+keymap('n','<leader>ph',":Pick help<CR>", "pick help tags")
 -- Markview
 keymap('n',"<leader>mo","<CMD>Markview open<CR>", "open path under cursor")
 keymap('n',"<leader>mt","<CMD>Markview toggle<CR>", "toggle markview")
@@ -127,6 +132,6 @@ keymap('i',"kj","<ESC>","quick exit insert mode")
 keymap('n',"<leader><leader>s","<CMD>Rshl<CR>","Reset the search highlight")
 keymap('v',"<leader><leader>p","<ESC>a)<ESC>gvo<ESC>i(<ESC>", "enclosure selection in parenthesis")
 keymap('v',"<leader><leader>b","<ESC>a]<ESC>gvo<ESC>i[<ESC>", "enclosure selection in brackets")
-keymap('v',"<leader><leader>B","<ESC>a}<ESC>gvo<ESC>i{<ESC>", "enclosure selection in curly brackets")
+keymap('v',"<leader><leader>c","<ESC>a}<ESC>gvo<ESC>i{<ESC>", "enclosure selection in curly brackets")
 keymap('v',"<leader><leader>q","<ESC>a\"<ESC>gvo<ESC>i\"<ESC>", "enclosure selection in double quotes")
 keymap('v',"<leader><leader>Q","<ESC>a\'<ESC>gvo<ESC>i\'<ESC>", "enclosure selection in single quotes")

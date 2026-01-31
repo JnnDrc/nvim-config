@@ -3,6 +3,17 @@ return {
     -- markview
     {"OXY2DEV/markview.nvim"},
     {
+        --eldoc
+        "sj2tpgk/nvim-eldoc",
+        config = function()
+            require("nvim-eldoc").setup()
+
+            vim.cmd "set updatetime=700"
+            vim.cmd "hi link Eldoc Normal"
+            vim.cmd "hi link EldocCur Identifier"
+        end
+    },
+    {
         "lewis6991/gitsigns.nvim",
         event = "VeryLazy",
         config = function()

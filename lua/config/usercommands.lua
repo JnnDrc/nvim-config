@@ -86,6 +86,12 @@ local function _Makeprg(...)
     for i = 2, #prg,2 do table.insert(prg,i," ") end
     vim.opt.makeprg = table.concat(prg)
 end
+
+local function _Git(...)
+    local args = {...}
+    for i = 2, #args, 2 do table.insert(args,i," ") end
+    vim.cmd("!git " .. table.concat(args))
+end
 ----------------------------------------
 -- Commands ----------------------------
 ----------------------------------------
@@ -110,3 +116,6 @@ create_command("Undump",_XXDR,{desc = "Undump the current file(must be an xxd he
 create_command("Redir",nil, {nargs = '+', complete = 'command'},_Redir)
 -- set makeprg
 create_command("Makeprg",_Makeprg, {nargs = '+'})
+create_command("MakeGCC",function() _Makeprg("gcc") end)
+-- git
+create_command("Git",_Git,{nargs = "*"})

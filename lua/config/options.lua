@@ -1,7 +1,6 @@
 -------------------------------------------------
 -- Options configuration!
 -------------------------------------------------
-
 local opt = vim.opt
 local g = vim.g
 -------------------------------------------------
@@ -9,16 +8,13 @@ local g = vim.g
 -------------------------------------------------
 opt.clipboard:append("unnamedplus")
 
--- disable mouse
-if false then
-    opt.mouse = ""
-end
-
 opt.timeoutlen = 500
 
 opt.splitbelow = true
 
 opt.undofile = true
+
+opt.swapfile = false
 -------------------------------------------------
 -- UI
 -------------------------------------------------
@@ -34,10 +30,10 @@ opt.scrolloff = 10
 opt.sidescrolloff = 10
 
 opt.termguicolors = true
-opt.signcolumn = "yes"
+opt.signcolumn  = "yes"
 opt.colorcolumn = "80"
 opt.showmatch = true
-opt.showmode = false
+opt.showmode  = false
 opt.winborder = "rounded"
 
 opt.list = true
@@ -45,32 +41,32 @@ opt.listchars = 'tab:» ,trail:·,space:·,nbsp:␣'
 -------------------------------------------------
 -- Indentation
 -------------------------------------------------
-local tab_size = 4
-opt.tabstop = tab_size
-opt.shiftwidth = tab_size
+local tab_size  = 4
+opt.tabstop     = tab_size
+opt.shiftwidth  = tab_size
 opt.softtabstop = tab_size
-opt.expandtab = true
+opt.expandtab   = true
 opt.smartindent = true
-opt.autoindent = true
+opt.autoindent  = true
 -------------------------------------------------
 -- Files
 -------------------------------------------------
-opt.autoread = true
-opt.autowrite = false
+opt.autoread   = true
+opt.autowrite  = false
 opt.updatetime = 400
 -------------------------------------------------
 -- Search
 -------------------------------------------------
 opt.ignorecase = true
-opt.smartcase = true
-opt.incsearch = true
-opt.hlsearch = true
+opt.smartcase  = true
+opt.incsearch  = true
+opt.hlsearch  = true
 -------------------------------------------------
 -- Folding
 -------------------------------------------------
 opt.foldmethod = "manual"
 opt.foldcolumn = "1"
-opt.foldlevel = 99
+opt.foldlevel  = 99
 -------------------------------------------------
 -- Netrw
 -------------------------------------------------

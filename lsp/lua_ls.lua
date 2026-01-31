@@ -9,7 +9,7 @@ if lua_ls_addons_dir then
 end
 
 return{
-    capabilities = cmp_capabilities,
+    capabilities = require("cmp_nvim_lsp").default_capabilities(),
     on_attach = default_on_attach,
     settings = {
         Lua = {

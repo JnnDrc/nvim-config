@@ -1,5 +1,3 @@
-cmp_capabilities = require("cmp_nvim_lsp").default_capabilities()
-
 function default_on_attach()
     vim.keymap.set("n", "<leader>A", vim.lsp.buf.code_action, { desc = "code action" })
     vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "see diagnostics" })
@@ -25,6 +23,7 @@ local lsps = {
     "lua_ls",
     "clangd",
     "fortls",
+    "ada_ls",
     "gopls",
     "zls",
 }

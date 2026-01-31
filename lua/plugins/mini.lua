@@ -16,6 +16,7 @@ return{
         require("mini.tabline").setup()
         require("mini.cursorword").setup()
         local hlp = require("mini.hipatterns")
+
         hlp.setup({
             highlighters = {
                 -- Highlight standalone 'FIXME', 'HACK', 'TODO', 'NOTE'
@@ -27,6 +28,9 @@ return{
                 hex_color = hlp.gen_highlighter.hex_color(),
           },
         })
+
+        local pick = require('mini.pick')
+        pick.setup()
 
         local clue = require('mini.clue')
         clue.setup({
@@ -139,5 +143,6 @@ return{
             query_updaters = "abcdefghijklmnopqrstuvwxyz0123456789_-.",
             silent = true,
         })
+
     end
 }
