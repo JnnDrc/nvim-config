@@ -1,24 +1,28 @@
 return {
+    -- {"https://github.com/hrsh7th/cmp-nvim-lsp"},
     {
-        "hrsh7th/cmp-nvim-lsp",
-    },
-    {
-        "L3MON4D3/LuaSnip",
-        dependencies = {
-            "saadparwaiz1/cmp_luasnip",
-            "rafamadriz/friendly-snippets",
+        "https://github.com/L3MON4D3/LuaSnip",
+        lazy = true,
+        deps = {
+            {"https://github.com/rafamadriz/friendly-snippets"},
         }
     },
     {
-        "hrsh7th/nvim-cmp",
+        "https://github.com/hrsh7th/nvim-cmp",
+        lazy = true,
+        deps = {
+            {"https://github.com/hrsh7th/cmp-buffer"},
+            {"https://github.com/hrsh7th/cmp-path"},
+            {"https://github.com/saadparwaiz1/cmp_luasnip"},
+        },
         event = "VeryLazy",
-        opts = function(_, opts)
-            opts.sources = opts.sources or {}
-            table.insert(opts.sources, {
-                name = "lazydev",
-                group_index = 0, -- set group index to 0 to skip loading LuaLS completions
-            })
-        end,
+        -- opts = function(_, opts)
+        --     opts.sources = opts.sources or {}
+        --     table.insert(opts.sources, {
+        --         name = "lazydev",
+        --         group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+        --     })
+        -- end,
         config = function()
             local cmp = require("cmp")
             local types = require("cmp.types")

@@ -1,21 +1,21 @@
-return{
-    'nvim-mini/mini.nvim',
-    version = false,
-    config = function ()
-        require("mini.pairs").setup()
+return {
+    "https://github.com/nvim-mini/mini.nvim",
+    config = function()
+        require("mini.pairs").setup({ modes = {command = true}})
         require("mini.move").setup()
         require("mini.comment").setup()
         require("mini.splitjoin").setup()
         require("mini.surround").setup()
-
-        require("mini.files").setup()
-        require("mini.notify").setup()
-
-        require("mini.icons").setup()
-        require("mini.statusline").setup()
-        require("mini.tabline").setup()
         require("mini.cursorword").setup()
+        require("mini.files").setup()
+        require("mini.icons").setup()
+
+        require("mini.pick").setup()
+
         local hlp = require("mini.hipatterns")
+
+        -- local snip = require("mini.snippets").setup()
+        -- local comp = require("mini.completion").setup()
 
         hlp.setup({
             highlighters = {
@@ -28,9 +28,6 @@ return{
                 hex_color = hlp.gen_highlighter.hex_color(),
           },
         })
-
-        local pick = require('mini.pick')
-        pick.setup()
 
         local clue = require('mini.clue')
         clue.setup({
@@ -91,29 +88,13 @@ return{
             },
         })
 
-        local headers = {
-          {
-              "|\\  | |--- /---\\ \\    / | |\\  /|",
-              "| \\ | |--- |   |  \\  /  | | \\/ |",
-              "|  \\| |___ \\---/   \\/   | |    |",
-          },
-          {
+        local header = {
               " _   _         __     ___",
               "| \\ | | ___  __\\ \\   / (_)_ __ ___",
               "|  \\| |/ _ \\/ _ \\ \\ / /| | '_ ` _ \\",
               "| |\\  |  __/ (_) \\ V / | | | | | | |",
               "|_| \\_|\\___|\\___/ \\_/  |_|_| |_| |_|",
-          },
-          {
-            "neoneo     neo neoneoneoneo    neoneo    vim          vim vim vim",
-            "neo neo    neo neo           neo    neo   vim        vim      vimvimvimvimvim",
-            "neo  neo   neo neoneoneoneo neo      neo   vim      vim   vim vim   vim    vim",
-            "neo   neo  neo neoneoneoneo neo      neo    vim    vim    vim vim   vim    vim",
-            "neo    neo neo neo           neo    neo      vim  vim     vim vim   vim    vim",
-            "neo     neoneo neoneoneoneo    neoneo         vimvim      vim vim   vim    vim",
           }
-        }
-        local header = headers[2]
         local nvv = string.format("%s.%s.%s",vim.version().major,vim.version().minor,vim.version().patch)
         table.insert(header,string.rep("-",#header[#header]-#nvv)..nvv)
         local footer = {
@@ -128,7 +109,7 @@ return{
             evaluate_single = true,
             items = {
                 {name = "new", action = "ene ", section = "nvim"},
-                {name = "config", action = "cd $NVIM_CONFIG | e init.lua", section = "nvim"},
+                {name = "config", action = "lua vim.cmd(\"cd \" .. vim.fn.stdpath(\"config\") ..\" | e init.lua\")", section = "nvim"},
                 {name = "quit", action = "wqa", section = "nvim"},
                 starter.sections.recent_files(5,true,false),
                 -- starter.sections.recent_files(5,false,false),

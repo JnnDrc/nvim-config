@@ -1,13 +1,13 @@
--------------------------------------------------------------------------------\
--- Usercommands configuration!                                                 |
--------------------------------------------------------------------------------/
+-- usercommands ----------------------------------------------------------------
+
+local U = {}
 
 ---create a user command
 ---@param name string           // user command name
 ---@param func function | nil   // function
 ---@param oopts? table          // optional options
 ---@param ofunc? function       // optional function
-local function create_command(name,func,oopts, ofunc)
+function U.create(name,func,oopts, ofunc)
     local f = ofunc or function (ctx)
         if func then
             func(ctx.args:match("([^ ]+)[ ]*(.*)"))
@@ -96,26 +96,30 @@ end
 -- Commands ----------------------------
 ----------------------------------------
 
--- force quit
-create_command("Q",function () vim.cmd("q!") end)
--- re-set search highlight
-create_command("Rshl",function () vim.cmd("let @/ = \"\"") end)
--- clear register
-create_command("ClearRegister",_clear_reg,{nargs = 1})
--- set tree-sitter parser for current file
-create_command("TSParser",_ts,{nargs = 1})
--- bunny
-create_command("Bun",_bunny)
--- print current buf nbuf
-create_command("Buf",function () print("nbuf: "..tostring(vim.api.nvim_get_current_buf())) end)
--- dump current file
-create_command("Dump",_XXD,{desc = "Hexdump current file"})
--- undump current file
-create_command("Undump",_XXDR,{desc = "Undump the current file(must be an xxd hexdump)"})
--- redirect output to new buffer
-create_command("Redir",nil, {nargs = '+', complete = 'command'},_Redir)
--- set makeprg
-create_command("Makeprg",_Makeprg, {nargs = '+'})
-create_command("MakeGCC",function() _Makeprg("gcc") end)
--- git
-create_command("Git",_Git,{nargs = "*"})
+function U.load()
+    -- force quit
+    U.create("Q",function () vim.cmd("q!") end)
+    -- re-set search highlight
+    U.create("Rshl",function () vim.cmd("let @/ = \"\"") end)
+    -- clear register
+    U.create("ClearRegister",_clear_reg,{nargs = 1})
+    -- set tree-sitter parser for current file
+    U.create("TSParser",_ts,{nargs = 1})
+    -- bunny
+    U.create("Bun",_bunny)
+    -- print current buf nbuf
+    U.create("Buf",function () print("nbuf: "..tostring(vim.api.nvim_get_current_buf())) end)
+    -- dump current file
+    U.create("Dump",_XXD,{desc = "Hexdump current file"})
+    -- undump current file
+    U.create("Undump",_XXDR,{desc = "Undump the current file(must be an xxd hexdump)"})
+    -- redirect output to new buffer
+    U.create("Redir",nil, {nargs = '+', complete = 'command'},_Redir)
+    -- set makeprg
+    U.create("Makeprg",_Makeprg, {nargs = '+'})
+    U.create("MakeGCC",function() _Makeprg("gcc") end)
+    -- git
+    U.create("Git",_Git,{nargs = "*"})
+end
+
+return U

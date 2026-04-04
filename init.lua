@@ -1,31 +1,24 @@
--------------------------------------------------------------------------------\
--- Init file!                                                                  |
--------------------------------------------------------------------------------/
-local start_time = vim.uv.hrtime()  -- measure startup time
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
-----------------------------------------
--- Init core
-----------------------------------------
-require("core.lazy")            -- Lazy.nvim set-up
-require("core.lsp")             -- LSP clients setup
-----------------------------------------
--- Init config
-----------------------------------------
-require("config.options")       -- vim options
-require("config.colorscheme")   -- colorscheme config
-require("config.keymaps")       -- re-mapings
-require("config.usercommands")  -- user defined commands
-----------------------------------------
--- Init plugins
-----------------------------------------
-require("plugin.flowin")                -- little plugin for make floating windows(my first try to make a plugin)
-require("plugin.fterm")                 -- terminal using flowin
-require("plugin.scratch")               -- lua scratch buffer
-----------------------------------------
--- Other options
-----------------------------------------
---Colorscheme---------------------------
-SetColorScheme(require("config.current-theme")) -- no args: default, see config.colorscheme
---Print-startup-time--------------------
+-- init.lua --------------------------------------------------------------------
+-- startup -----------------------------
+local start_time = vim.uv.hrtime()
+package.path = package.path .. ";" .. vim.fn.stdpath("data") .. "/?.lua"
+
+require("options")
+kmap    = require("keymaps")
+usrcmd  = require("usercommands")
+color   = require("colors")
+-- load plugins ------------------------
+local pack = require("pack")
+pack.load()
+
+-- init config --
+kmap.load()
+usrcmd.load()
+color.load()
+
+-- init plugins ------------------------
+require("plugin.fterm").setup()  -- floating terminal
+require("plugin.scratch")        -- floating lua scratch buffer
+
+-- print startup time ------------------
 vim.notify(string.format("Neovim loaded in %.4fms",((vim.uv.hrtime() - start_time)/1e6)), vim.log.levels.INFO, {title = "Welcome again!"})

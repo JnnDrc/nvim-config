@@ -156,6 +156,6 @@ vim.api.nvim_create_user_command("Eval",function (ctx)
     end
 end,{range = true})
 
-vim.keymap.set('n','<C-e>',":Eval<CR>")
-vim.keymap.set('v','<C-e>',":'<,'>Eval<CR>")
-vim.keymap.set('n','<C-s>',":Scratch<CR>")
+vim.keymap.set('n','<C-e>',":Eval<CR>",{silent = true})
+vim.keymap.set('v','<C-e>',":'<,'>Eval<CR>",{silent = true})
+vim.keymap.set('n','<C-s>',":Scratch<CR>",{silent = true})
