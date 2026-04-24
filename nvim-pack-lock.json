@@ -32,6 +32,10 @@
       "rev": "402ee6c6ec8ea44b22330446c8fb4e615fd3953e",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
+    "nvim": {
+      "rev": "d14874439210cfd96727831b7be2885909e90edb",
+      "src": "https://github.com/ember-theme/nvim"
+    },
     "nvim-cmp": {
       "rev": "a1d504892f2bc56c2e79b65c6faded2fd21f3eca",
       "src": "https://github.com/hrsh7th/nvim-cmp"
@@ -55,6 +59,10 @@
     "vim-dark": {
       "rev": "9c03d5adf3a75281e1c7e4264c20b3e61a3b8ec4",
       "src": "https://github.com/thiago-negri/vim-dark"
+    },
+    "vimwiki": {
+      "rev": "72792615e739d0eb54a9c8f7e0a46a6e2407c9e8",
+      "src": "https://github.com/vimwiki/vimwiki"
     }
   }
 }

@@ -15,14 +15,6 @@ return {
             {"https://github.com/hrsh7th/cmp-path"},
             {"https://github.com/saadparwaiz1/cmp_luasnip"},
         },
-        event = "VeryLazy",
-        -- opts = function(_, opts)
-        --     opts.sources = opts.sources or {}
-        --     table.insert(opts.sources, {
-        --         name = "lazydev",
-        --         group_index = 0, -- set group index to 0 to skip loading LuaLS completions
-        --     })
-        -- end,
         config = function()
             local cmp = require("cmp")
             local types = require("cmp.types")
@@ -56,7 +48,7 @@ return {
             require("luasnip.loaders.from_vscode").lazy_load()
             cmp.setup({
                 completion = {
-                    -- autocomplete = false, --uncomment to make autocompletes optional/toggleable
+                    autocomplete = false, --uncomment to make autocompletes optional/toggleable
                     completeopt = 'menu,menuone,noselect'
                 },
                 snippet = {

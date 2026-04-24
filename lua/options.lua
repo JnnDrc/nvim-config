@@ -47,6 +47,13 @@ vim.o.autoindent  = true
 vim.o.autoread   = true
 vim.o.autowrite  = false
 vim.o.updatetime = 400
+
+vim.filetype.add({
+    extension = {
+        h = "c"
+    }
+})
+
 -- search ------------------------------
 vim.o.ignorecase = true
 vim.o.smartcase  = true

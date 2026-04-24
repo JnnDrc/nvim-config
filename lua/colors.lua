@@ -23,6 +23,6 @@ function C.load(file)
     vim.cmd.colorscheme(C.get(file) or "default")
 end
 
-vim.api.nvim_create_user_command("SaveColorscheme",function() C.save() end,{nargs = 0})
+require("usercmd").create("SaveColorscheme",function() C.save() end,{nargs = 0})
 
 return C

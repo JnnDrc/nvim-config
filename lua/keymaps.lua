@@ -20,18 +20,18 @@ end
 function K.load()
     -- neovim keymaps ----------------------
     -- Window shortcuts
-    K.keymap('n',"<leader>wH","<CMD>new<CR>","Create a new window in horizontal")
-    K.keymap('n',"<leader>wh","<CMD>split<CR>","Split the current window horizontaly")
-    K.keymap('n',"<leader>wV","<CMD>vnew<CR>","Create a new window in vertical")
-    K.keymap('n',"<leader>wv","<CMD>vsplit<CR>","Split the current window verticaly")
-    K.keymap('n',"<leader>wc","<CMD>close<CR>","Close the current window")
+    K.keymap('n',"<leader>WH","<CMD>new<CR>","Create a new window in horizontal")
+    K.keymap('n',"<leader>Wh","<CMD>split<CR>","Split the current window horizontaly")
+    K.keymap('n',"<leader>WV","<CMD>vnew<CR>","Create a new window in vertical")
+    K.keymap('n',"<leader>Wv","<CMD>vsplit<CR>","Split the current window verticaly")
+    K.keymap('n',"<leader>Wc","<CMD>close<CR>","Close the current window")
 
-    K.keymap('n',"<leader>www","<CMD>wall<CR>","Write all files with changes")
-    K.keymap('n',"<leader>wqq","<CMD>qall<CR>","Close all windows and quit nvim")
-    K.keymap('n',"<leader>wwq","<CMD>wqall<CR>","Write all files and quit nvim")
-    K.keymap('n',"<leader>wq!","<CMD>qall!<CR>","Throw all changes and quit nvim")
+    K.keymap('n',"<leader>Www","<CMD>wall<CR>","Write all files with changes")
+    K.keymap('n',"<leader>Wqq","<CMD>qall<CR>","Close all windows and quit nvim")
+    K.keymap('n',"<leader>Wwq","<CMD>wqall<CR>","Write all files and quit nvim")
+    K.keymap('n',"<leader>Wq!","<CMD>qall!<CR>","Throw all changes and quit nvim")
 
-    K.keymap('n',"<leader>ws","<C-w>x","Swap the current with the next")
+    K.keymap('n',"<leader>Ws","<C-w>x","Swap the current with the next")
 
     K.keymap({'n','t'},"<C-H>","<C-W>h")
     K.keymap({'n','t'},"<C-L>","<C-W>l")
@@ -70,16 +70,24 @@ function K.load()
     K.keymap('n',"<leader>Ff","zf%","Create a fold under the cursor")
     K.keymap('n',"<leader>Fd","zd","Delete a fold under the cursor")
     K.keymap('n',"<leader>FD","zD","Delete all folds under the cursor")
+    
+    -- Go to tag definitions
+    K.keymap('n',"<C-\\>",function() vim.cmd("tag " .. vim.fn.expand("<cword>")) end, "go to tag definition")
+    K.keymap('n',"gd",function() vim.cmd("tag " .. vim.fn.expand("<cword>")) end, "go to tag definition")
+    K.keymap('n',"gD",function() vim.cmd("tselect " .. vim.fn.expand("<cword>")) end, "select tag definition")
+
+    -- 
+    K.keymap('n',"<leader>T", function() vim.treesitter.start() end, "start treesitter for current buffer")
 
     -- plugin keymaps ------------------
     -- Mini.nvim
     K.keymap('n','<leader>e',MiniFiles.open,"open mini files")
     K.keymap('n','<leader>D',MiniStarter.open,"open dashboard")
 
-    K.keymap('n','<leader>ff',":Pick files<CR>","pick files")
-    K.keymap('n','<leader>fb',":Pick buffers<CR>","pick buffers")
-    K.keymap('n','<leader>fg',":Pick grep_live<CR>", "grep cwd")
-    K.keymap('n','<leader>fh',":Pick help<CR>", "pick help tags")
+    K.keymap('n','<leader>ff',"<CMD>Pick files<CR>","pick files")
+    K.keymap('n','<leader>fb',"<CMD>Pick buffers<CR>","pick buffers")
+    K.keymap('n','<leader>fg',"<CMD>Pick grep_live<CR>", "grep cwd")
+    K.keymap('n','<leader>fh',"<CMD>Pick help<CR>", "pick help tags")
     -- Markview
     K.keymap('n',"<leader>mo","<CMD>Markview open<CR>", "open path under cursor")
     K.keymap('n',"<leader>mt","<CMD>Markview toggle<CR>", "toggle markview")

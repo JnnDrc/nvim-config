@@ -1,5 +1,10 @@
 -- plugin manager --------------------------------------------------------------
-local P = {}
+local P = {plugins_loaded = 0}
+
+-- PackSpec
+-- [1]  = source path   (string)
+-- lazy = lazy loading  (bool)
+-- deps = dependencies  ({PackSpec})
 
 function P.add(spec)
     vim.pack.add({spec[1]})
@@ -9,6 +14,7 @@ function P.add(spec)
         end
     end
     if spec.config then spec.config() end
+    P.plugins_loaded = P.plugins_loaded + 1
 end
 
 function P.del(name_or_list)
@@ -52,8 +58,8 @@ function P.load(path)
 
 end
 
-usrcmd.create("PackUpdate", P.update)
-usrcmd.create("PackDelete",function(...) 
+usercmd.create("PackUpdate", P.update)
+usercmd.create("PackDelete",function(...) 
     local plugs = {...}
     for i = 1, #plugs do
         local plug = plugs[i]

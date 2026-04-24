@@ -1,11 +1,7 @@
 local fw = require("plugin.flowin")
--- opts ------------------------------------------------------------------------
-
-local eval_to = "bottom"
+local M = {_ENV = {}}
 
 -- code ------------------------------------------------------------------------
-
-local ns = vim.api.nvim_create_namespace("scratch_eval")
 
 local function fmt_res(res)
     if res == nil then
@@ -19,9 +15,7 @@ end
 
 -- scratch env -----------------------------------------------------------------
 
-local _ENV = setmetatable({},{__index = _G})
-
-_ENV.echo = function(...)
+M._ENV.echo = function(...)
     local args = {...}
     local msg = ""
     for _,v in ipairs(args) do
@@ -33,7 +27,7 @@ end
 
 -- evaluation ------------------------------------------------------------------
 local function eval_lua(code)
-    local fn, err = load("return " .. code, "eval",'t',_ENV)
+    local fn, err = load("return " .. code, "eval",'t',M._ENV)
     if fn then
         return pcall(fn)
     end
@@ -48,12 +42,12 @@ local function eval_lua(code)
 
     local wrapped = table.concat(lines,"\n") .. (#lines > 0 and "\n" or "" or "") .. "return " .. last
 
-    fn, err = load(wrapped,"eval",'t',_ENV)
+    fn, err = load(wrapped,"eval",'t',M._ENV)
     if fn then
         return pcall(fn)
     end
 
-    fn, err = load(code,"eval",'t',_ENV)
+    fn, err = load(code,"eval",'t',M._ENV)
     if fn then
         return pcall(fn)
     end
@@ -88,7 +82,7 @@ local function eval_to_bot(buf,code)
 end
 
 local function eval_inline(buf,code,line)
-    vim.api.nvim_buf_clear_namespace(buf, ns, line, line + 1)
+    vim.api.nvim_buf_clear_namespace(buf, M.ns, line, line + 1)
     local ok,res = eval_lua(code)
 
     local text,hl
@@ -100,7 +94,7 @@ local function eval_inline(buf,code,line)
         hl = "DiagnosticError"
     end
 
-    vim.api.nvim_buf_set_extmark(buf, ns, line, -1, {
+    vim.api.nvim_buf_set_extmark(buf, M.ns, line, -1, {
         virt_text = {
             { text, hl }
         },
@@ -109,53 +103,62 @@ local function eval_inline(buf,code,line)
 end
 
 -- commands
-local _scratch = fw.window()
 
-vim.api.nvim_create_user_command("Scratch",function (ctx)
-    fw.toggle(_scratch,{
-        size_factor = 0.5,
-    }, function (win,buf)
-        vim.bo[buf].buftype   = 'nofile'
-        vim.bo[buf].bufhidden = 'hide'
-        vim.bo[buf].swapfile  = false
+function M.setup(opt)
+    opt = opt or {}
+    M._scratch = fw.window()
+    M.eval_to = opt.eval_to or "bottom"
+    M.ns = vim.api.nvim_create_namespace("scratch_eval")
+    setmetatable(M._ENV,{__index = _G})
 
-        vim.bo[buf].filetype  = "lua"
+    vim.api.nvim_create_user_command("Scratch",function (ctx)
+        fw.toggle(M._scratch,{
+            size_factor = 0.5,
+        }, function (win,buf)
+            vim.bo[buf].buftype   = 'nofile'
+            vim.bo[buf].bufhidden = 'hide'
+            vim.bo[buf].swapfile  = false
 
-        vim.bo[buf].expandtab = true
+            vim.bo[buf].filetype  = "lua"
 
-        vim.wo[win].number         = true
-        vim.wo[win].relativenumber = true
-        vim.wo[win].signcolumn     = 'yes'
-    end)
+            vim.bo[buf].expandtab = true
 
-end,{nargs = 0})
+            vim.wo[win].number         = true
+            vim.wo[win].relativenumber = true
+            vim.wo[win].signcolumn     = 'yes'
+        end)
 
-vim.api.nvim_create_user_command("Eval",function (ctx)
-    local buf  = vim.api.nvim_get_current_buf()
-    local code
-    local line
-    if vim.bo[buf].buftype == 'nofile' then
-        if ctx.range == 2 then
-            local lines = vim.api.nvim_buf_get_lines(buf,ctx.line1 - 1,ctx.line2,false)
-            code = table.concat(lines,"\n")
-            line = ctx.line2 - 1
+    end,{nargs = 0})
+
+    vim.api.nvim_create_user_command("Eval",function (ctx)
+        local buf  = vim.api.nvim_get_current_buf()
+        local code
+        local line
+        if vim.bo[buf].buftype == 'nofile' then
+            if ctx.range == 2 then
+                local lines = vim.api.nvim_buf_get_lines(buf,ctx.line1 - 1,ctx.line2,false)
+                code = table.concat(lines,"\n")
+                line = ctx.line2 - 1
+            else
+                code = vim.api.nvim_get_current_line()
+                line = vim.api.nvim_win_get_cursor(0)[1] - 1
+            end
+
+            if M.eval_to == "inline" then
+                eval_inline(buf,code,line)
+            elseif M.eval_to == "bottom" then
+                eval_to_bot(buf,code)
+            else
+                error("invalid 'eval_to' option: " .. M.eval_to, 2)
+            end
         else
-            code = vim.api.nvim_get_current_line()
-            line = vim.api.nvim_win_get_cursor(0)[1] - 1
+            print("not in scratch file")
         end
+    end,{range = true})
 
-        if eval_to == "inline" then
-            eval_inline(buf,code,line)
-        elseif eval_to == "bottom" then
-            eval_to_bot(buf,code)
-        else
-            error("invalid 'eval_to' option: " .. eval_to, 2)
-        end
-    else
-        print("not in scratch file")
-    end
-end,{range = true})
+    vim.keymap.set('n','<C-e>',":Eval<CR>",{silent = true})
+    vim.keymap.set('v','<C-e>',":'<,'>Eval<CR>",{silent = true})
+    vim.keymap.set('n','<C-s>',":Scratch<CR>",{silent = true})
+end
 
-vim.keymap.set('n','<C-e>',":Eval<CR>",{silent = true})
-vim.keymap.set('v','<C-e>',":'<,'>Eval<CR>",{silent = true})
-vim.keymap.set('n','<C-s>',":Scratch<CR>",{silent = true})
+return M

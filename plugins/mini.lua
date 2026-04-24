@@ -78,12 +78,10 @@ return {
                 {mode = 'n', keys = "<leader>f", desc = "Find"},
                 {mode = 'n', keys = "<leader>F", desc = "Fold"},
                 {mode = 'n', keys = "<leader>m", desc = "Markview"},
-                {mode = 'n', keys = "<leader>g", desc = "Git"},
                 {mode = 'n', keys = "<leader>l", desc = "LSP"},
                 {mode = 'n', keys = "<leader>t", desc = "Terminal"},
-                {mode = 'n', keys = "<leader>w", desc = "Window"},
-                {mode = 'n', keys = "<leader>p", desc = "Plugins"},
-                {mode = 'n', keys = "<leader>r", desc = "Source config"},
+                {mode = 'n', keys = "<leader>W", desc = "Window"},
+                {mode = 'n', keys = "<leader>r", desc = "Source"},
 
             },
         })

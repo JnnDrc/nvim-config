@@ -5,20 +5,24 @@ package.path = package.path .. ";" .. vim.fn.stdpath("data") .. "/?.lua"
 
 require("options")
 kmap    = require("keymaps")
-usrcmd  = require("usercommands")
+usercmd = require("usercmd")
+autocmd = require("autocmd")
 color   = require("colors")
+
 -- load plugins ------------------------
-local pack = require("pack")
+pack = require("pack")
 pack.load()
 
 -- init config --
 kmap.load()
-usrcmd.load()
+usercmd.load()
+autocmd.load()
 color.load()
 
 -- init plugins ------------------------
-require("plugin.fterm").setup()  -- floating terminal
-require("plugin.scratch")        -- floating lua scratch buffer
+require("plugin.fterm").setup()     -- floating terminal
+require("plugin.scratch").setup()   -- floating lua scratch buffer
+require("plugin.bufline").setup()   -- custom buffer line on status line
 
 -- print startup time ------------------
 vim.notify(string.format("Neovim loaded in %.4fms",((vim.uv.hrtime() - start_time)/1e6)), vim.log.levels.INFO, {title = "Welcome again!"})
