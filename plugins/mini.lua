@@ -12,11 +12,16 @@ return {
 
         require("mini.pick").setup()
 
-        local hlp = require("mini.hipatterns")
-
         -- local snip = require("mini.snippets").setup()
         -- local comp = require("mini.completion").setup()
-
+        --
+        local hlp = require("mini.hipatterns")
+        local words = { red = "#ff0000", green = "#00ff00", blue = "#0000ff"}
+        local WordColorGroup = function(_, match)
+            local hex = words[match]
+            if hex == nil then return nil end
+            return hlp.compute_hex_color_group(hex,'bg')
+        end
         hlp.setup({
             highlighters = {
                 -- Highlight standalone 'FIXME', 'HACK', 'TODO', 'NOTE'
@@ -26,6 +31,8 @@ return {
                 note  = { pattern = '%f[%w]()NOTE()%f[%W]',  group = 'MiniHipatternsNote'  },
                 -- Highlight hex color strings (`#rrggbb`) using that color
                 hex_color = hlp.gen_highlighter.hex_color(),
+                -- highlight specific words, defined in WordColorGroup
+                word  = { pattern = '%S+', group = WordColorGroup}
           },
         })
 

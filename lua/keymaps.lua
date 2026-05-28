@@ -103,6 +103,7 @@ function K.load()
     K.keymap('v',"<leader><leader>c","<ESC>a}<ESC>gvo<ESC>i{<ESC>", "enclosure selection in curly brackets")
     K.keymap('v',"<leader><leader>q","<ESC>a\"<ESC>gvo<ESC>i\"<ESC>", "enclosure selection in double quotes")
     K.keymap('v',"<leader><leader>Q","<ESC>a\'<ESC>gvo<ESC>i\'<ESC>", "enclosure selection in single quotes")
+    K.keymap('v',"<leader><leader>a","<ESC>a><ESC>gvo<ESC>i<<ESC>", "enclosure selection in single quotes")
 end
 
 return K

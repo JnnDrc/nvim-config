@@ -24,10 +24,7 @@ local function _clear_reg(reg)
     vim.cmd("let @" .. reg .. " = ''")
     vim.notify("Cleared register ".. reg,vim.log.levels.INFO,{title = "Clear register"})
 end
--- set treesitter
-local function _ts(parser)
-    require('nvim-treesitter.highlight').attach(0, parser)
-end
+
 -- bunny
 local function _bunny()
     vim.notify("\n(\\(\\\n( -.-)\no_(\")(\")"  )

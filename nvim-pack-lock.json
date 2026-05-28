@@ -24,6 +24,10 @@
       "rev": "6cd7280adead7f586db6fccbd15d2cac7e2188b9",
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
+    "gitsigns.nvim": {
+      "rev": "dd3f588bacbeb041be6facf1742e42097f62165d",
+      "src": "https://github.com/lewis6991/gitsigns.nvim"
+    },
     "markview.nvim": {
       "rev": "1861f959599ae03cfd59f56222a542035b0cd947",
       "src": "https://github.com/OXY2DEV/markview.nvim"

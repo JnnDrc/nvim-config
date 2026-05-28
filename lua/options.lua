@@ -55,8 +55,7 @@ vim.filetype.add({
 })
 
 -- search ------------------------------
-vim.o.ignorecase = true
-vim.o.smartcase  = true
+vim.o.ignorecase = true vim.o.smartcase  = true
 vim.o.incsearch  = true
 vim.o.hlsearch  = true
 -- folding -----------------------------
