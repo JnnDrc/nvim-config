@@ -77,10 +77,8 @@ function M.setup()
     vim.o.statusline = table.concat({
         "%{% v:lua.BufferLine() %} ",
         "%h%w%m%r ",
-        "%{% v:lua.require('vim._core.util').term_exitcode() %}",
         "%=",
         "%y [%n] ",
-        "%{% luaeval('(package.loaded[''vim.ui''] and vim.api.nvim_get_current_win() == tonumber(vim.g.actual_curwin or -1) and vim.ui.progress_status()) or '''' ')%}",
         "%{% &showcmdloc == 'statusline' ? '%-10.S ' : '' %}",
         "%{% exists('b:keymap_name') ? '<'..b:keymap_name..'> ' : '' %}",
         "%{% &busy > 0 ? '◐ ' : '' %}",

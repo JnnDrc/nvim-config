@@ -79,6 +79,10 @@ function K.load()
     -- 
     K.keymap('n',"<leader>T", function() vim.treesitter.start() end, "start treesitter for current buffer")
 
+    -- make
+    K.keymap('n',"<C-n>","<CMD>cn<CR>","next error")
+    K.keymap('n',"<C-p>","<CMD>cp<CR>","prev error")
+
     -- plugin keymaps ------------------
     -- Mini.nvim
     K.keymap('n','<leader>e',MiniFiles.open,"open mini files")
