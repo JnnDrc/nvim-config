@@ -99,8 +99,6 @@ function U.load()
     U.create("Rshl",function () vim.cmd("let @/ = \"\"") end)
     -- clear register
     U.create("ClearRegister",_clear_reg,{nargs = 1})
-    -- set tree-sitter parser for current file
-    U.create("TSParser",_ts,{nargs = 1})
     -- bunny
     U.create("Bun",_bunny)
     -- print current buf nbuf
