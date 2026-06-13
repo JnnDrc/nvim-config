@@ -9,7 +9,7 @@ local U = {}
 function U.create(name,func,oopts, ofunc)
     local f = ofunc or function (ctx)
         if func then
-            func(ctx.args:match("([^ ]+)[ ]*(.*)"))
+            func(unpack(ctx.fargs))
         end
     end
     vim.api.nvim_create_user_command(name,f, oopts or {})

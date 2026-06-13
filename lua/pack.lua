@@ -96,12 +96,14 @@ function P.load(path)
 end
 
 usercmd.create("PackUpdate", P.update)
-usercmd.create("PackDelete",function(...) 
-    local plugs = {...}
-    for i = 1, #plugs do
-        local plug = plugs[i]
+usercmd.create("PackDelete",function(...)
+    local args = {...}
+    local plugs = {}
+    for _, plug in ipairs(args) do
         if plug:sub(1,1) == '\"' then
-            plugs[i] = plug:sub(2,#plug-1)
+            plugs[#plugs+1] = plug:sub(2,#plug-1)
+        else
+            plugs[#plugs+1] = plug
         end
     end
     P.del(plugs)

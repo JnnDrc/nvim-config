@@ -4,10 +4,6 @@
       "rev": "642b0c595e11608b4c18219e93b88d7637af27bc",
       "src": "https://github.com/L3MON4D3/LuaSnip"
     },
-    "arete.nvim": {
-      "rev": "f2162e49b527213d2e1cfc16e4e189ca8fc918e8",
-      "src": "https://github.com/szymonwilczek/arete.nvim"
-    },
     "cmp-buffer": {
       "rev": "b74fab3656eea9de20a9b8116afa3cfc4ec09657",
       "src": "https://github.com/hrsh7th/cmp-buffer"
@@ -32,6 +28,10 @@
       "rev": "25050e4ed39e628282831d4cbecb1850454ce915",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
+    "lackluster.nvim": {
+      "rev": "70dd682e564784893b984deb51dd5ddd263c8cc7",
+      "src": "https://github.com/slugbyte/lackluster.nvim"
+    },
     "markview.nvim": {
       "rev": "576e50fa99091ff47a9920e1b6ef94b2a7c2f036",
       "src": "https://github.com/OXY2DEV/markview.nvim"
@@ -39,10 +39,6 @@
     "mini.nvim": {
       "rev": "a59a9b7fb0a42cbcf022938ee5f0724320b66f63",
       "src": "https://github.com/nvim-mini/mini.nvim"
-    },
-    "nvim": {
-      "rev": "7365b8dede43a82ed1df741275b75333422e5402",
-      "src": "https://github.com/ember-theme/nvim"
     },
     "nvim-cmp": {
       "rev": "a1d504892f2bc56c2e79b65c6faded2fd21f3eca",
