@@ -1,4 +1,4 @@
-" Syntax file
+" Vim Syntax file
 " Language: SBL (Stack Based Language)
 
 if exists("b:current_syntax")
