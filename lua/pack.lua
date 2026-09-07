@@ -7,10 +7,10 @@ local function run_build(build)
 
     if t == "function" then build() 
     elseif t == "string" then
-        if spec.build:sub(1,1) == ':' then
+        if build:sub(1,1) == ':' then
             vim.cmd(spec.build:sub(2))
         else
-            vim.system(vim.split(spec.build," "), {text = true}):wait()
+            vim.system(vim.split(build," "), {text = true}):wait()
         end
     elseif t == "table" then
         for _, b in ipairs(build) do
@@ -23,7 +23,8 @@ end
 
 local P = {
     plugins_loaded = 0,
-    specs = {}
+    loaded = {},
+    specs  = {},
 }
 
 -- PackSpec
@@ -33,7 +34,9 @@ local P = {
 -- build = install/update command (string)
 
 function P.add(spec)
-    vim.pack.add({spec[1]})
+    local name = spec.name or spec[1]
+
+    if P.loaded[name] then return end
 
     if type(spec.deps) == "table" then
         for _, dep in ipairs(spec.deps) do
@@ -41,9 +44,17 @@ function P.add(spec)
         end
     end
 
-    if spec.config then spec.config() end
+    vim.pack.add({spec[1]}, {load = not spec.lazy})
+
+    if spec.config then
+        if spec.lazy then
+            vim.schedule(spec.config)
+        end
+        spec.config()
+    end
 
     P.plugins_loaded = P.plugins_loaded + 1
+    table.insert(P.loaded,name)
 end
 
 function P.del(name_or_list)
@@ -88,9 +99,7 @@ function P.load(path)
 
     for _, spec in ipairs(plugins) do
         P.specs[spec[1]] = spec
-        if spec.lazy then vim.schedule(function() P.add(spec) end)
-        else P.add(spec)
-        end
+        P.add(spec)
     end
 
 end

@@ -1,13 +1,15 @@
 -- colors.lua ------------------------------------------------------------------
 
 local C = {}
+C.colorpath = vim.fn.stdpath("data") .. "/"
 
 function C.save(file)
     local cs = vim.g.colors_name or "default"
     file = file or "colorscheme.lua"
-    local f = io.open(vim.fn.stdpath("data") .. "/" .. file, "w")
+    local path = C.colorpath .. file
+    local f = io.open(path, "w")
     if (f == nil) then
-        vim.notify("Failed to open data/colorscheme.lua")
+        vim.notify("Failed to open" .. path)
         return
     end
     f:write(string.format("return \"%s\"", cs))
